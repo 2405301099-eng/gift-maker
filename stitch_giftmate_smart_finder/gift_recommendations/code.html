@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>GiftMate - Gift Recommendations</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-surface": "#1d1b1d",
+                    "on-error-container": "#93000a",
+                    "on-secondary": "#ffffff",
+                    "outline": "#8e6f74",
+                    "on-secondary-fixed-variant": "#6a1b9a",
+                    "tertiary-container": "#cca730",
+                    "secondary": "#843ab4",
+                    "tertiary-fixed-dim": "#e9c349",
+                    "on-secondary-container": "#580087",
+                    "on-tertiary-fixed-variant": "#574500",
+                    "surface-container": "#f2ecee",
+                    "inverse-on-surface": "#f5eff1",
+                    "surface-tint": "#bc004f",
+                    "on-tertiary-container": "#4f3e00",
+                    "secondary-container": "#cc80fd",
+                    "on-background": "#1d1b1d",
+                    "error": "#ba1a1a",
+                    "surface-container-highest": "#e7e1e3",
+                    "on-error": "#ffffff",
+                    "on-primary": "#ffffff",
+                    "background": "#fef8fa",
+                    "secondary-fixed": "#f4d9ff",
+                    "primary-fixed": "#ffd9de",
+                    "on-primary-fixed": "#3f0016",
+                    "surface-dim": "#ded9db",
+                    "surface-bright": "#fef8fa",
+                    "error-container": "#ffdad6",
+                    "surface-variant": "#e7e1e3",
+                    "on-tertiary-fixed": "#241a00",
+                    "inverse-primary": "#ffb2bf",
+                    "on-tertiary": "#ffffff",
+                    "surface-container-high": "#ece7e9",
+                    "tertiary": "#735c00",
+                    "primary-container": "#d81b60",
+                    "primary": "#b0004a",
+                    "inverse-surface": "#323031",
+                    "on-primary-fixed-variant": "#90003b",
+                    "on-surface-variant": "#5a4044",
+                    "secondary-fixed-dim": "#e4b5ff",
+                    "tertiary-fixed": "#ffe088",
+                    "on-primary-container": "#fff2f3",
+                    "outline-variant": "#e3bdc3",
+                    "surface-container-low": "#f8f2f4",
+                    "surface": "#fef8fa",
+                    "on-secondary-fixed": "#2f004b",
+                    "primary-fixed-dim": "#ffb2bf",
+                    "surface-container-lowest": "#ffffff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "1rem",
+                    "lg": "2rem",
+                    "xl": "3rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "gutter": "16px",
+                    "container-margin": "24px",
+                    "stack-md": "24px",
+                    "stack-lg": "48px",
+                    "base": "8px",
+                    "stack-sm": "12px"
+            },
+            "fontFamily": {
+                    "body-lg": [
+                            "Inter", "sans-serif"
+                    ],
+                    "body-sm": [
+                            "Inter", "sans-serif"
+                    ],
+                    "display-lg": [
+                            "Playfair Display", "serif"
+                    ],
+                    "title-md": [
+                            "Inter", "sans-serif"
+                    ],
+                    "headline-lg-mobile": [
+                            "Playfair Display", "serif"
+                    ],
+                    "headline-lg": [
+                            "Playfair Display", "serif"
+                    ],
+                    "label-caps": [
+                            "Inter", "sans-serif"
+                    ]
+            },
+            "fontSize": {
+                    "body-lg": [
+                            "16px",
+                            {
+                                    "lineHeight": "24px",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "body-sm": [
+                            "14px",
+                            {
+                                    "lineHeight": "20px",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "display-lg": [
+                            "48px",
+                            {
+                                    "lineHeight": "56px",
+                                    "letterSpacing": "-0.02em",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "title-md": [
+                            "20px",
+                            {
+                                    "lineHeight": "28px",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "headline-lg-mobile": [
+                            "28px",
+                            {
+                                    "lineHeight": "36px",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "headline-lg": [
+                            "32px",
+                            {
+                                    "lineHeight": "40px",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "label-caps": [
+                            "12px",
+                            {
+                                    "lineHeight": "16px",
+                                    "letterSpacing": "0.1em",
+                                    "fontWeight": "700"
+                            }
+                    ]
+            }
+    },
+        },
+      }
+    </script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:wght@700&display=swap');
+        
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 8px 32px 0 rgba(132, 58, 180, 0.05);
+        }
+        
+        .dark .glass-panel {
+            background: rgba(40, 38, 39, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+        }
+
+        .gradient-text {
+            background: linear-gradient(45deg, #b0004a, #843ab4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .btn-gradient {
+            background: linear-gradient(45deg, #b0004a, #843ab4);
+            color: white;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-gradient:hover {
+            box-shadow: 0 4px 15px rgba(132, 58, 180, 0.3);
+            transform: translateY(-1px);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background antialiased min-h-screen flex flex-col relative overflow-x-hidden">
+<!-- Ambient Background Gradients -->
+<div class="fixed inset-0 z-[-1] pointer-events-none">
+<div class="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] rounded-full bg-primary-fixed/30 blur-[100px]"></div>
+<div class="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] rounded-full bg-secondary-fixed/30 blur-[100px]"></div>
+</div>
+<!-- TopAppBar -->
+<header class="bg-surface/80 dark:bg-surface-dim/80 backdrop-blur-xl fixed top-0 w-full z-50 shadow-xl">
+<div class="flex justify-between items-center px-container-margin py-4 max-w-7xl mx-auto">
+<button class="scale-95 active:opacity-80 transition-transform">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed text-3xl">menu</span>
+</button>
+<h1 class="font-display-lg text-headline-lg-mobile md:text-display-lg bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">GiftMate</h1>
+<button class="scale-95 active:opacity-80 transition-transform">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed text-3xl">person</span>
+</button>
+</div>
+<!-- Horizontal Nav for Desktop (Hidden on Mobile) -->
+<nav class="hidden md:flex justify-center space-x-8 pb-4 border-b border-white/30">
+<a class="text-on-surface-variant dark:text-surface-variant font-medium hover:text-secondary dark:hover:text-secondary-fixed transition-colors duration-300" href="#">Home</a>
+<a class="text-on-surface-variant dark:text-surface-variant font-medium hover:text-secondary dark:hover:text-secondary-fixed transition-colors duration-300" href="#">Find a Gift</a>
+<a class="text-on-surface-variant dark:text-surface-variant font-medium hover:text-secondary dark:hover:text-secondary-fixed transition-colors duration-300" href="#">Categories</a>
+<a class="text-primary dark:text-primary-fixed font-bold border-b-2 border-primary" href="#">Recommendations</a>
+<a class="text-on-surface-variant dark:text-surface-variant font-medium hover:text-secondary dark:hover:text-secondary-fixed transition-colors duration-300" href="#">Wishlist</a>
+</nav>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-grow pt-[100px] md:pt-[140px] px-container-margin md:px-0 max-w-7xl mx-auto w-full mb-stack-lg">
+<!-- Header Section -->
+<div class="text-center mb-stack-md mt-stack-sm md:mt-stack-md">
+<h2 class="font-display-lg text-headline-lg-mobile md:text-display-lg mb-2 text-on-surface">Curated for You</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto">We've hand-picked these exquisite gifts based on your recipient's profile. Discover the perfect gesture.</p>
+</div>
+<!-- Filters & Sort Bar -->
+<div class="glass-panel rounded-lg p-4 mb-stack-md flex flex-col md:flex-row justify-between items-center gap-4 sticky top-[100px] md:top-[140px] z-40">
+<div class="flex items-center w-full md:w-auto relative">
+<span class="material-symbols-outlined absolute left-3 text-tertiary-container z-10">search</span>
+<input class="w-full md:w-80 pl-10 pr-4 py-3 rounded-full bg-surface border border-outline-variant focus:border-secondary focus:ring-1 focus:ring-secondary font-body-sm text-body-sm text-on-surface transition-all placeholder-on-surface-variant/60" placeholder="Refine recommendations..." type="text"/>
+</div>
+<div class="flex flex-wrap gap-2 md:gap-4 w-full md:w-auto justify-center md:justify-end">
+<button class="flex items-center gap-1 px-4 py-2 rounded-full bg-surface-container border border-outline-variant hover:border-secondary transition-colors font-body-sm text-body-sm text-on-surface">
+<span class="material-symbols-outlined text-[18px]">tune</span> Filters
+                </button>
+<div class="relative group">
+<button class="flex items-center gap-1 px-4 py-2 rounded-full bg-surface-container border border-outline-variant hover:border-secondary transition-colors font-body-sm text-body-sm text-on-surface">
+                        Sort by: <span class="font-bold ml-1">Match Score</span> <span class="material-symbols-outlined text-[18px]">expand_more</span>
+</button>
+<!-- Dropdown could go here -->
+</div>
+</div>
+</div>
+<!-- Active Filters Chips -->
+<div class="flex flex-wrap gap-2 mb-stack-lg">
+<span class="px-3 py-1 rounded-full bg-primary-fixed text-on-primary-fixed font-label-caps text-label-caps flex items-center gap-1">
+                Under $100 <button class="material-symbols-outlined text-[14px] hover:text-primary">close</button>
+</span>
+<span class="px-3 py-1 rounded-full bg-primary-fixed text-on-primary-fixed font-label-caps text-label-caps flex items-center gap-1">
+                Anniversary <button class="material-symbols-outlined text-[14px] hover:text-primary">close</button>
+</span>
+</div>
+<!-- Bento Grid Recommendations -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-container-margin">
+<!-- Card 1 -->
+<article class="glass-panel rounded-[2rem] overflow-hidden flex flex-col group transition-transform duration-300 hover:-translate-y-2">
+<div class="relative h-64 overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A high-end, minimalist photograph of an elegant artisanal ceramic tea set sitting on a light oak table. Soft, natural daylight streams in from a window, creating a serene and premium light-mode aesthetic. The composition is clean, with subtle pink and purple accent tones in the background decor. The overall mood is sophisticated and calming." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCptmJ7kMc_SBxOpzRe71-Kv5vmDuUUydLSej6kRau5JH-JTTaBDg2oqV5MWH5B8kDOeBE_ayVxThJq02MIAm2PHrgnB0_vx_VhXR0obWxayPNQSpgBO24t64xaVjnZrhzHg63R10vpvcalP4YmmYd9S8OrkLfBGUbHrz3g9m6Al9KCxizq2mk4zNgXEpzFpFmaBfdxZM0sIhmiqCecqt6NZiaIvitwHp8k1kMVZriyixMzTbkn5n-Z"/>
+<button class="absolute top-4 right-4 w-10 h-10 rounded-full bg-surface/80 backdrop-blur flex items-center justify-center text-on-surface hover:text-primary transition-colors shadow-sm">
+<span class="material-symbols-outlined">favorite</span>
+</button>
+<div class="absolute bottom-4 left-4 flex gap-2">
+<span class="px-2 py-1 rounded-full bg-surface/80 backdrop-blur font-label-caps text-label-caps text-on-surface">98% Match</span>
+</div>
+</div>
+<div class="p-6 flex flex-col flex-grow">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-display-lg text-title-md text-on-surface leading-tight">Artisanal Ceramic Tea Set</h3>
+<span class="font-body-lg text-title-md text-primary font-bold">$85</span>
+</div>
+<div class="flex items-center gap-1 mb-4">
+<span class="material-symbols-outlined text-tertiary-container text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-tertiary-container text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-tertiary-container text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-tertiary-container text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-tertiary-container text-sm">star_half</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant ml-1">(124)</span>
+</div>
+<div class="bg-surface-container-low rounded-xl p-4 mb-6 flex-grow">
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-secondary text-[18px]">auto_awesome</span>
+<span class="font-title-md text-body-sm text-secondary font-bold">Why this gift?</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Matches her interest in mindfulness and recent searches for sustainable home goods. A perfect, calming anniversary present.</p>
+</div>
+<button class="w-full py-3 rounded-full btn-gradient font-title-md text-body-lg font-semibold flex justify-center items-center gap-2">
+                        View Details
+                    </button>
+</div>
+</article>
+<!-- Card 2 -->
+<article class="glass-panel rounded-[2rem] overflow-hidden flex flex-col group transition-transform duration-300 hover:-translate-y-2">
+<div class="relative h-64 overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A premium close-up shot of a sleek, modern smart indoor garden kit featuring fresh herbs under a gentle, warm LED grow light. The setting is a clean, contemporary kitchen with white marble countertops. The lighting is bright and inviting, fitting a premium light-mode UI. Subtle magenta highlights catch the edge of the device, conveying a high-tech yet organic luxury vibe." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDRoJ6mOts6mCOGXgm1D6JZrr15D0mzJ18wORdA0Z2LGq_xhKzsdDaR7JkCvssooKEvb3axNkiB_JGlp_h7OIAYPoZZxiFMTuGxPYG5y_u1kBaW2d22P5nxhS2qU27pQJEjNZz9RkwdSFriBJU9hSNVB5t27EGS6ILoN3kg2UUMzFnWeq5_wbXh8qpLuYfNYqwQfRTJq4hMPax5v-1c9MASofwonK0z2csRVnCL7pMgRbtlgJW0eUI9"/>
+<button class="absolute top-4 right-4 w-10 h-10 rounded-full bg-surface/80 backdrop-blur flex items-center justify-center text-on-surface hover:text-primary transition-colors shadow-sm">
+<span class="material-symbols-outlined">favorite</span>
+</button>
+<div class="absolute bottom-4 left-4 flex gap-2">
+<span class="px-2 py-1 rounded-full bg-surface/80 backdrop-blur font-label-caps text-label-caps text-on-surface">95% Match</span>
+</div>
+</div>
+<div class="p-6 flex flex-col flex-grow">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-display-lg text-title-md text-on-surface leading-tight">Smart Indoor Herb Garden</h3>
+<span class="font-body-lg text-title-md text-primary font-bold">$120</span>
+</div>
+<div class="flex items-center gap-1 mb-4">
+<span class="material-symbols-outlined text-tertiary-container text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-tertiary-container text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-tertiary-container text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-tertiary-container text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-tertiary-container text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant ml-1">(342)</span>
+</div>
+<div class="bg-surface-container-low rounded-xl p-4 mb-6 flex-grow">
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-secondary text-[18px]">auto_awesome</span>
+<span class="font-title-md text-body-sm text-secondary font-bold">Why this gift?</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Combines his love for cooking and gadgets. Ideal for apartments and requires minimal maintenance.</p>
+</div>
+<button class="w-full py-3 rounded-full btn-gradient font-title-md text-body-lg font-semibold flex justify-center items-center gap-2">
+                        View Details
+                    </button>
+</div>
+</article>
+<!-- Card 3 -->
+<article class="glass-panel rounded-[2rem] overflow-hidden flex flex-col group transition-transform duration-300 hover:-translate-y-2">
+<div class="relative h-64 overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A beautifully styled flat lay of a luxury silk sleep mask and a glass jar of premium bath salts resting on a soft, plush white towel. The color palette is composed of soothing pastels, soft pinks, and pristine whites, embodying a high-end wellness aesthetic. The lighting is soft and diffused, creating a serene, inviting atmosphere perfect for a light-mode design." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAesridqLxZucOd0ube9FE3uBnhmeDnbswyg9vEBMnnwdNt1IEaNmcUclDtFVqBf2B6cmO658uhQSfIbOk-AZk-ztKG8zIDcbNo6QldrCk_Pzmug8dZBDVUGB9Vs71YF1qTdshQ4brZHWGYqfp6pfRO6TUf2Mm5USqR37LnPqeGkgkISCX4uNW2vMkMDx4iQqkIzvot6gcNTKqMrnOfzennQsCCVVeAUoLon55W3ZHoMK6v0m9lqRNs"/>
+<button class="absolute top-4 right-4 w-10 h-10 rounded-full bg-surface/80 backdrop-blur flex items-center justify-center text-on-surface hover:text-primary transition-colors shadow-sm">
+<span class="material-symbols-outlined">favorite</span>
+</button>
+<div class="absolute bottom-4 left-4 flex gap-2">
+<span class="px-2 py-1 rounded-full bg-surface/80 backdrop-blur font-label-caps text-label-caps text-on-surface">92% Match</span>
+</div>
+</div>
+<div class="p-6 flex flex-col flex-grow">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-display-lg text-title-md text-on-surface leading-tight">Luxury Sleep Wellness Set</h3>
+<span class="font-body-lg text-title-md text-primary font-bold">$65</span>
+</div>
+<div class="flex items-center gap-1 mb-4">
+<span class="material-symbols-outlined text-tertiary-container text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-tertiary-container text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-tertiary-container text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-tertiary-container text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-tertiary-container text-sm">star_border</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant ml-1">(89)</span>
+</div>
+<div class="bg-surface-container-low rounded-xl p-4 mb-6 flex-grow">
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-secondary text-[18px]">auto_awesome</span>
+<span class="font-title-md text-body-sm text-secondary font-bold">Why this gift?</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">A thoughtful gesture based on her stressful week. Encourages relaxation and self-care.</p>
+</div>
+<button class="w-full py-3 rounded-full btn-gradient font-title-md text-body-lg font-semibold flex justify-center items-center gap-2">
+                        View Details
+                    </button>
+</div>
+</article>
+</div>
+<div class="flex justify-center mt-stack-lg">
+<button class="px-8 py-3 rounded-full border-2 border-secondary text-secondary font-title-md text-body-lg hover:bg-secondary-fixed transition-colors">
+                Load More Recommendations
+            </button>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-highest dark:bg-inverse-surface mt-stack-lg border-t border-outline-variant flat">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter px-container-margin py-stack-lg w-full max-w-7xl mx-auto">
+<div class="col-span-1 md:col-span-1">
+<div class="font-display-lg text-title-md text-primary mb-4">GiftMate</div>
+<p class="font-body-sm text-body-sm dark:text-surface-variant text-on-surface-variant">The Art of Giving, perfected.</p>
+</div>
+<div class="col-span-1 md:col-span-3 flex flex-wrap gap-x-8 gap-y-4 md:justify-end">
+<a class="text-on-surface-variant font-body-sm text-body-sm dark:text-surface-variant hover:text-secondary underline-offset-4 hover:underline opacity-90 hover:opacity-100 transition-opacity" href="#">About Us</a>
+<a class="text-on-surface-variant font-body-sm text-body-sm dark:text-surface-variant hover:text-secondary underline-offset-4 hover:underline opacity-90 hover:opacity-100 transition-opacity" href="#">Gift Guides</a>
+<a class="text-on-surface-variant font-body-sm text-body-sm dark:text-surface-variant hover:text-secondary underline-offset-4 hover:underline opacity-90 hover:opacity-100 transition-opacity" href="#">Shipping</a>
+<a class="text-on-surface-variant font-body-sm text-body-sm dark:text-surface-variant hover:text-secondary underline-offset-4 hover:underline opacity-90 hover:opacity-100 transition-opacity" href="#">Terms</a>
+<a class="text-on-surface-variant font-body-sm text-body-sm dark:text-surface-variant hover:text-secondary underline-offset-4 hover:underline opacity-90 hover:opacity-100 transition-opacity" href="#">Privacy</a>
+</div>
+</div>
+<div class="text-center pb-8">
+<span class="font-body-sm text-body-sm text-on-surface-variant dark:text-surface-variant">© 2024 GiftMate Premium Curation. All rights reserved.</span>
+</div>
+</footer>
+<!-- BottomNavBar for Mobile (Hidden on Desktop) -->
+<nav class="md:hidden fixed bottom-0 w-full bg-surface/90 backdrop-blur-xl pb-safe pt-2 px-4 flex justify-around items-center z-50 border-t border-outline-variant/30">
+<a class="flex flex-col items-center p-2 text-on-surface-variant" href="#">
+<span class="material-symbols-outlined text-2xl">home</span>
+<span class="font-label-caps text-[10px] mt-1">Home</span>
+</a>
+<a class="flex flex-col items-center p-2 text-on-surface-variant" href="#">
+<span class="material-symbols-outlined text-2xl">search</span>
+<span class="font-label-caps text-[10px] mt-1">Find</span>
+</a>
+<a class="flex flex-col items-center p-2 text-primary font-bold" href="#">
+<div class="bg-primary-fixed rounded-full p-1 mb-1">
+<span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+</div>
+<span class="font-label-caps text-[10px]">Recs</span>
+</a>
+<a class="flex flex-col items-center p-2 text-on-surface-variant" href="#">
+<span class="material-symbols-outlined text-2xl">favorite</span>
+<span class="font-label-caps text-[10px] mt-1">Wishlist</span>
+</a>
+</nav>
+</body></html>

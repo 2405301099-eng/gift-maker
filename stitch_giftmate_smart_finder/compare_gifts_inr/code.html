@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Compare Gifts - GiftMate</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=Playfair+Display:wght@700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-surface": "#1d1b1d",
+                        "on-error-container": "#93000a",
+                        "on-secondary": "#ffffff",
+                        "outline": "#8e6f74",
+                        "on-secondary-fixed-variant": "#6a1b9a",
+                        "tertiary-container": "#cca730",
+                        "secondary": "#843ab4",
+                        "tertiary-fixed-dim": "#e9c349",
+                        "on-secondary-container": "#580087",
+                        "on-tertiary-fixed-variant": "#574500",
+                        "surface-container": "#f2ecee",
+                        "inverse-on-surface": "#f5eff1",
+                        "surface-tint": "#bc004f",
+                        "on-tertiary-container": "#4f3e00",
+                        "secondary-container": "#cc80fd",
+                        "on-background": "#1d1b1d",
+                        "error": "#ba1a1a",
+                        "surface-container-highest": "#e7e1e3",
+                        "on-error": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "background": "#fef8fa",
+                        "secondary-fixed": "#f4d9ff",
+                        "primary-fixed": "#ffd9de",
+                        "on-primary-fixed": "#3f0016",
+                        "surface-dim": "#ded9db",
+                        "surface-bright": "#fef8fa",
+                        "error-container": "#ffdad6",
+                        "surface-variant": "#e7e1e3",
+                        "on-tertiary-fixed": "#241a00",
+                        "inverse-primary": "#ffb2bf",
+                        "on-tertiary": "#ffffff",
+                        "surface-container-high": "#ece7e9",
+                        "tertiary": "#735c00",
+                        "primary-container": "#d81b60",
+                        "primary": "#b0004a",
+                        "inverse-surface": "#323031",
+                        "on-primary-fixed-variant": "#90003b",
+                        "on-surface-variant": "#5a4044",
+                        "secondary-fixed-dim": "#e4b5ff",
+                        "tertiary-fixed": "#ffe088",
+                        "on-primary-container": "#fff2f3",
+                        "outline-variant": "#e3bdc3",
+                        "surface-container-low": "#f8f2f4",
+                        "surface": "#fef8fa",
+                        "on-secondary-fixed": "#2f004b",
+                        "primary-fixed-dim": "#ffb2bf",
+                        "surface-container-lowest": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "16px",
+                        "container-margin": "24px",
+                        "stack-md": "24px",
+                        "stack-lg": "48px",
+                        "base": "8px",
+                        "stack-sm": "12px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "display-lg": ["Playfair Display"],
+                        "title-md": ["Inter"],
+                        "headline-lg-mobile": ["Playfair Display"],
+                        "headline-lg": ["Playfair Display"],
+                        "label-caps": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "title-md": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "headline-lg-mobile": ["28px", { "lineHeight": "36px", "fontWeight": "700" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "fontWeight": "700" }],
+                        "label-caps": ["12px", { "lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .glass-card {
+            background: rgba(254, 248, 250, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            box-shadow: 0 10px 40px -10px rgba(132, 58, 180, 0.08);
+        }
+        .text-gradient {
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .table-cell-glass {
+            background: rgba(254, 248, 250, 0.4);
+            border-bottom: 1px solid rgba(227, 189, 195, 0.3);
+        }
+        .best-match-highlight {
+            background: linear-gradient(135deg, rgba(216, 27, 96, 0.05) 0%, rgba(132, 58, 180, 0.05) 100%);
+            border: 1px solid rgba(216, 27, 96, 0.2);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-lg min-h-screen flex flex-col pt-24 pb-12 antialiased selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-surface/80 dark:bg-surface-dim/80 backdrop-blur-xl border-b border-white/30 shadow-[0_8px_32px_0_rgba(132,58,180,0.1)] shadow-xl">
+<div class="flex justify-between items-center px-container-margin py-4 max-w-7xl mx-auto">
+<button class="scale-95 active:opacity-80 transition-transform flex items-center justify-center w-10 h-10 rounded-full hover:bg-surface-variant/50">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed" data-icon="menu">menu</span>
+</button>
+<h1 class="font-display-lg text-display-lg bg-gradient-to-r from-primary to-secondary text-gradient">GiftMate</h1>
+<button class="scale-95 active:opacity-80 transition-transform flex items-center justify-center w-10 h-10 rounded-full hover:bg-surface-variant/50">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed" data-icon="person">person</span>
+</button>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-grow px-container-margin max-w-7xl mx-auto w-full flex flex-col gap-stack-lg">
+<!-- Header Section -->
+<div class="flex flex-col gap-base text-center mt-stack-md">
+<h2 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary">Compare Gifts</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto">Evaluating 3 thoughtful options for the upcoming anniversary.</p>
+</div>
+<!-- Comparison Section (Desktop/Tablet) -->
+<div class="hidden md:block w-full overflow-hidden rounded-xl glass-card relative z-10">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr>
+<th class="p-6 font-title-md text-title-md text-on-surface-variant font-semibold align-bottom w-1/4">Features</th>
+<!-- Gift 1 (Best Match) -->
+<th class="p-6 w-1/4 relative best-match-highlight rounded-t-xl">
+<div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-primary text-on-primary font-label-caps text-label-caps px-3 py-1 rounded-full shadow-md z-20 whitespace-nowrap">
+                                    BEST MATCH
+                                </div>
+<div class="flex flex-col items-center gap-4 text-center">
+<div class="w-32 h-32 rounded-lg overflow-hidden shadow-md">
+<img class="w-full h-full object-cover" data-alt="A beautifully crafted artisanal leather journal with embossed initials, resting on a clean wooden desk with soft, warm morning light casting gentle shadows. The aesthetic is premium, minimalist, and tactile, utilizing deep rich browns against a neutral background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAGsSoaVjMP81HNRLzoANEZVOuGS7xqF1DfWoJvK0REh28447gh_VLu0HyP6YDir6bI7U6LAL_enT-h3BjZ6FS3kYCFh25BEtWLOzZ2L-ofY23aMOiTvptkbIIW0cQBNWr8lGe7oCVUY3Gab51wEyiQ1bUpVbRzriwlpIH6B8LVJUbp1Dvg5CnAOKF47EuN-SjEqA_INFbp8t667Gby3Lh_Hg7T5vThmXz3AWYJOTq5c5DGYzW_G32q"/>
+</div>
+<h3 class="font-title-md text-title-md text-primary">Artisan Leather Journal</h3>
+<button class="bg-gradient-to-r from-primary to-secondary text-on-primary font-title-md text-title-md py-2 px-6 rounded-full hover:shadow-lg transition-all duration-300 w-full mt-2">Choose This</button>
+</div>
+</th>
+<!-- Gift 2 -->
+<th class="p-6 w-1/4">
+<div class="flex flex-col items-center gap-4 text-center">
+<div class="w-32 h-32 rounded-lg overflow-hidden shadow-sm">
+<img class="w-full h-full object-cover" data-alt="A sleek, modern smart mug in matte black, placed on a white marble countertop. Wisps of steam rise gently. The lighting is bright and contemporary, reflecting a high-end tech lifestyle with a minimalist, clean aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBt08TA8PXfv4g80uV5EqYzq1L68nASTJqLHtSOWoE-c19q4GTYQ9kVLbmf83dPcx2lLifh41wGkOXIOeCuxTH0lns4Nisv0PrKjp9XVHceFUx5Q4lFXFszxeYBWgtuz0v5j2a0596vPus6zPpJ4sznLVdrwVPGDxy_85759oJ-l1luT0fiBKlwMtwheq7Tf7HU2AnVfPNuhXHqSV-lRAw6CLuH8dXDLZzMn0E7z6r8V_tDll_xmqHw"/>
+</div>
+<h3 class="font-title-md text-title-md text-on-surface">Smart Temp Mug</h3>
+<button class="bg-surface-container-highest text-on-surface font-title-md text-title-md py-2 px-6 rounded-full hover:bg-surface-variant transition-all duration-300 w-full mt-2 border border-outline-variant">Select</button>
+</div>
+</th>
+<!-- Gift 3 -->
+<th class="p-6 w-1/4">
+<div class="flex flex-col items-center gap-4 text-center">
+<div class="w-32 h-32 rounded-lg overflow-hidden shadow-sm">
+<img class="w-full h-full object-cover" data-alt="A premium gourmet coffee tasting set in an elegant gift box. The box is open, revealing neatly arranged small bags of coffee beans and a sleek measuring spoon. Set against a soft cream background with sophisticated, even lighting, emphasizing luxury and taste." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCq-2gpy1Is-GgLGomQqgWuPvPrIGg-7rPnwPPFY4gtNB3cxeLTJ100hjvL0mLk9s0RkjoABB5ws0Je3-g__pAP5SpO9x4tRzJJ2CKmJ9_oBlVMni8-ndXDMcw-BdMGBI7Dj2hoAo8ChvwBiti2wZjOVAhUnNxkIVIYVaCQ4O99_DUgHCGl6iRzKfK5OEW_w-n6UTvNOBfloakRdzSKnXFWcQOK5xjtgFT7l2i6Ig16th9EW08agY02"/>
+</div>
+<h3 class="font-title-md text-title-md text-on-surface">Gourmet Coffee Set</h3>
+<button class="bg-surface-container-highest text-on-surface font-title-md text-title-md py-2 px-6 rounded-full hover:bg-surface-variant transition-all duration-300 w-full mt-2 border border-outline-variant">Select</button>
+</div>
+</th>
+</tr>
+</thead>
+<tbody class="font-body-lg text-body-lg text-on-surface">
+<!-- Price Row -->
+<tr>
+<td class="p-6 table-cell-glass font-semibold text-on-surface-variant">Price</td>
+<td class="p-6 table-cell-glass text-center font-bold text-lg best-match-highlight">₹2,499</td>
+<td class="p-6 table-cell-glass text-center">₹3,499</td>
+<td class="p-6 table-cell-glass text-center">₹1,899</td>
+</tr>
+<!-- Rating Row -->
+<tr>
+<td class="p-6 table-cell-glass font-semibold text-on-surface-variant">Rating</td>
+<td class="p-6 table-cell-glass text-center best-match-highlight">
+<div class="flex items-center justify-center gap-1 text-tertiary-container">
+<span class="material-symbols-outlined" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-on-surface font-semibold ml-1">4.9</span>
+</div>
+</td>
+<td class="p-6 table-cell-glass text-center">
+<div class="flex items-center justify-center gap-1 text-tertiary-container">
+<span class="material-symbols-outlined" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-on-surface font-semibold ml-1">4.6</span>
+</div>
+</td>
+<td class="p-6 table-cell-glass text-center">
+<div class="flex items-center justify-center gap-1 text-tertiary-container">
+<span class="material-symbols-outlined" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-on-surface font-semibold ml-1">4.8</span>
+</div>
+</td>
+</tr>
+<!-- Occasion Row -->
+<tr>
+<td class="p-6 table-cell-glass font-semibold text-on-surface-variant">Best For</td>
+<td class="p-6 table-cell-glass text-center best-match-highlight">
+<span class="bg-primary-fixed text-on-primary-fixed px-3 py-1 rounded-full text-sm">Anniversary</span>
+</td>
+<td class="p-6 table-cell-glass text-center">
+<span class="bg-surface-variant text-on-surface-variant px-3 py-1 rounded-full text-sm">Birthday</span>
+</td>
+<td class="p-6 table-cell-glass text-center">
+<span class="bg-surface-variant text-on-surface-variant px-3 py-1 rounded-full text-sm">Thank You</span>
+</td>
+</tr>
+<!-- Personalization Row -->
+<tr>
+<td class="p-6 table-cell-glass font-semibold text-on-surface-variant">Personalization</td>
+<td class="p-6 table-cell-glass text-center best-match-highlight">
+<span class="material-symbols-outlined text-primary" data-icon="check_circle">check_circle</span>
+<p class="text-sm text-on-surface-variant mt-1">Free Monogramming</p>
+</td>
+<td class="p-6 table-cell-glass text-center">
+<span class="material-symbols-outlined text-outline" data-icon="cancel">cancel</span>
+<p class="text-sm text-on-surface-variant mt-1">Not Available</p>
+</td>
+<td class="p-6 table-cell-glass text-center">
+<span class="material-symbols-outlined text-primary" data-icon="check_circle">check_circle</span>
+<p class="text-sm text-on-surface-variant mt-1">Gift Note Included</p>
+</td>
+</tr>
+<!-- Key Features Row -->
+<tr>
+<td class="p-6 font-semibold text-on-surface-variant rounded-bl-xl border-b-0 table-cell-glass">Key Features</td>
+<td class="p-6 text-sm text-on-surface-variant text-center best-match-highlight rounded-br-xl">
+                                Full-grain leather, archival-quality paper, handmade in Italy.
+                            </td>
+<td class="p-6 text-sm text-on-surface-variant text-center border-b-0 table-cell-glass">
+                                App-controlled temp, 1.5hr battery, stainless steel core.
+                            </td>
+<td class="p-6 text-sm text-on-surface-variant text-center border-b-0 table-cell-glass">
+                                4 single-origin roasts, tasting notes guide, sustainable sourcing.
+                            </td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Mobile Comparison Stack -->
+<div class="md:hidden flex flex-col gap-stack-md">
+<!-- Best Match Mobile Card -->
+<div class="glass-card rounded-xl p-6 relative border border-primary/30">
+<div class="absolute -top-3 right-6 bg-primary text-on-primary font-label-caps text-label-caps px-3 py-1 rounded-full shadow-md z-20">
+                    BEST MATCH
+                </div>
+<div class="flex gap-4 items-center border-b border-outline-variant/30 pb-4 mb-4">
+<img class="w-24 h-24 object-cover rounded-lg shadow-sm" data-alt="A beautifully crafted artisanal leather journal with embossed initials, resting on a clean wooden desk with soft, warm morning light casting gentle shadows. The aesthetic is premium, minimalist, and tactile, utilizing deep rich browns against a neutral background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBp3ENAp-nMKykOoFuftrPoANUCE2DLTEJhScSVX9NU-XxDf57UtcqhW2k9k1EM4F7wAZAcz7MuOrsTHAJYT4sIVFRRnQUQ_IM3TzUXw22d2RlBdtnWgk6MovCZH8qy3P3r_Pn0_xHUbixH_j8hYAHJT1HGjmBEfbcq3_R5Jto-ZecpR2A8VMyH24PQ84U4ssKkh6OgFXWfE2svqgQNvzVGNHMYKiQyuWKLnVyUXIqWSfQ6Tk5kBwel"/>
+<div>
+<h3 class="font-title-md text-title-md text-primary leading-tight">Artisan Leather Journal</h3>
+<div class="flex items-center gap-1 mt-1">
+<span class="font-bold text-lg text-on-surface">₹2,499</span>
+<span class="text-on-surface-variant text-sm">• 4.9 ★</span>
+</div>
+</div>
+</div>
+<div class="space-y-3 font-body-sm text-body-sm">
+<div class="flex justify-between items-center">
+<span class="text-on-surface-variant font-semibold">Best For</span>
+<span class="bg-primary-fixed text-on-primary-fixed px-2 py-0.5 rounded-full text-xs">Anniversary</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-on-surface-variant font-semibold">Personalization</span>
+<span class="text-on-surface flex items-center gap-1"><span class="material-symbols-outlined text-primary text-sm" data-icon="check_circle">check_circle</span> Yes</span>
+</div>
+<div>
+<span class="text-on-surface-variant font-semibold block mb-1">Features</span>
+<p class="text-on-surface">Full-grain leather, archival-quality paper, handmade in Italy.</p>
+</div>
+</div>
+<button class="bg-gradient-to-r from-primary to-secondary text-on-primary font-title-md text-title-md py-3 px-6 rounded-full hover:shadow-lg transition-all duration-300 w-full mt-6">Choose This Gift</button>
+</div>
+<!-- Alternative 1 Mobile Card -->
+<div class="glass-card rounded-xl p-6">
+<div class="flex gap-4 items-center border-b border-outline-variant/30 pb-4 mb-4">
+<img class="w-20 h-20 object-cover rounded-lg shadow-sm" data-alt="A sleek, modern smart mug in matte black, placed on a white marble countertop. Wisps of steam rise gently. The lighting is bright and contemporary, reflecting a high-end tech lifestyle with a minimalist, clean aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDzh-BU7_Nd4PW-SAaDcPBDv5R7bET59ogdaqlHCokevgvH-VvlgymR8xuVRJfxvKC1l-u9f8l6sgZXoNH3LIzZTQfIi2eGFViBSm8ep1OZ5Et5D03pcGchRWb3pZjZMtYQ3ZWWo_lBTw9aiIW7F-OqWOxLa6FoAWVa4uHwmrdbN8C2cSM7F9AlS1umJ_5EXRtM_4yLSfhq7z11mmoU5RXVMyIi6WSvhUH_0qU3i-HUc1ONy7w4KOlx"/>
+<div>
+<h3 class="font-title-md text-title-md text-on-surface leading-tight">Smart Temp Mug</h3>
+<div class="flex items-center gap-1 mt-1">
+<span class="font-bold text-lg text-on-surface">₹3,499</span>
+<span class="text-on-surface-variant text-sm">• 4.6 ★</span>
+</div>
+</div>
+</div>
+<button class="bg-surface-container-highest text-on-surface font-title-md text-title-md py-2 px-6 rounded-full w-full border border-outline-variant">View Details</button>
+</div>
+<!-- Alternative 2 Mobile Card -->
+<div class="glass-card rounded-xl p-6">
+<div class="flex gap-4 items-center border-b border-outline-variant/30 pb-4 mb-4">
+<img class="w-20 h-20 object-cover rounded-lg shadow-sm" data-alt="A premium gourmet coffee tasting set in an elegant gift box. The box is open, revealing neatly arranged small bags of coffee beans and a sleek measuring spoon. Set against a soft cream background with sophisticated, even lighting, emphasizing luxury and taste." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCZPaIguM-KSR_XnoRKFkmC_MRy3BIrBDcjM_4MH-5rlYkJsXKlV2RNGXCx-iWe-Kcx430NS8fxwN6bsTKURkJ4h5282Z2mK4GHfETed9oEGT8B7adqBYYL702yu9E_VVRDymQAxoYXltCfYlcojsgMMMeRV49uEfcMserqYqjjcf9XYpdsIMoDpsYgCMWttYVqCJDHdJ5liKmR1l-GsdBxBX6h5_so4whO-kGsezuw32lFXUb0gi1j"/>
+<div>
+<h3 class="font-title-md text-title-md text-on-surface leading-tight">Gourmet Coffee Set</h3>
+<div class="flex items-center gap-1 mt-1">
+<span class="font-bold text-lg text-on-surface">₹1,899</span>
+<span class="text-on-surface-variant text-sm">• 4.8 ★</span>
+</div>
+</div>
+</div>
+<button class="bg-surface-container-highest text-on-surface font-title-md text-title-md py-2 px-6 rounded-full w-full border border-outline-variant">View Details</button>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full mt-stack-lg border-t border-outline-variant flat bg-surface-container-highest dark:bg-inverse-surface">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter px-container-margin py-stack-lg w-full max-w-7xl mx-auto">
+<div class="col-span-1 md:col-span-4 mb-4">
+<span class="font-display-lg text-title-md text-primary">GiftMate</span>
+</div>
+<div class="flex flex-col gap-2">
+<a class="font-body-sm text-body-sm dark:text-surface-variant text-on-surface-variant hover:text-secondary underline-offset-4 hover:underline opacity-90 hover:opacity-100 transition-opacity" href="#">About Us</a>
+<a class="font-body-sm text-body-sm dark:text-surface-variant text-on-surface-variant hover:text-secondary underline-offset-4 hover:underline opacity-90 hover:opacity-100 transition-opacity" href="#">Gift Guides</a>
+</div>
+<div class="flex flex-col gap-2">
+<a class="font-body-sm text-body-sm dark:text-surface-variant text-on-surface-variant hover:text-secondary underline-offset-4 hover:underline opacity-90 hover:opacity-100 transition-opacity" href="#">Shipping</a>
+<a class="font-body-sm text-body-sm dark:text-surface-variant text-on-surface-variant hover:text-secondary underline-offset-4 hover:underline opacity-90 hover:opacity-100 transition-opacity" href="#">Terms</a>
+</div>
+<div class="flex flex-col gap-2">
+<a class="font-body-sm text-body-sm dark:text-surface-variant text-on-surface-variant hover:text-secondary underline-offset-4 hover:underline opacity-90 hover:opacity-100 transition-opacity" href="#">Privacy</a>
+</div>
+<div class="col-span-1 md:col-span-4 mt-8 pt-4 border-t border-outline-variant/30">
+<p class="font-body-sm text-body-sm dark:text-surface-variant text-on-surface-variant text-center opacity-70">© 2024 GiftMate Premium Curation. All rights reserved.</p>
+</div>
+</div>
+</footer>
+</body></html>

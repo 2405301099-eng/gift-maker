@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>GiftMate - Gift Reminders</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=Playfair+Display:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-surface": "#1d1b1d",
+                        "on-error-container": "#93000a",
+                        "on-secondary": "#ffffff",
+                        "outline": "#8e6f74",
+                        "on-secondary-fixed-variant": "#6a1b9a",
+                        "tertiary-container": "#cca730",
+                        "secondary": "#843ab4",
+                        "tertiary-fixed-dim": "#e9c349",
+                        "on-secondary-container": "#580087",
+                        "on-tertiary-fixed-variant": "#574500",
+                        "surface-container": "#f2ecee",
+                        "inverse-on-surface": "#f5eff1",
+                        "surface-tint": "#bc004f",
+                        "on-tertiary-container": "#4f3e00",
+                        "secondary-container": "#cc80fd",
+                        "on-background": "#1d1b1d",
+                        "error": "#ba1a1a",
+                        "surface-container-highest": "#e7e1e3",
+                        "on-error": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "background": "#fef8fa",
+                        "secondary-fixed": "#f4d9ff",
+                        "primary-fixed": "#ffd9de",
+                        "on-primary-fixed": "#3f0016",
+                        "surface-dim": "#ded9db",
+                        "surface-bright": "#fef8fa",
+                        "error-container": "#ffdad6",
+                        "surface-variant": "#e7e1e3",
+                        "on-tertiary-fixed": "#241a00",
+                        "inverse-primary": "#ffb2bf",
+                        "on-tertiary": "#ffffff",
+                        "surface-container-high": "#ece7e9",
+                        "tertiary": "#735c00",
+                        "primary-container": "#d81b60",
+                        "primary": "#b0004a",
+                        "inverse-surface": "#323031",
+                        "on-primary-fixed-variant": "#90003b",
+                        "on-surface-variant": "#5a4044",
+                        "secondary-fixed-dim": "#e4b5ff",
+                        "tertiary-fixed": "#ffe088",
+                        "on-primary-container": "#fff2f3",
+                        "outline-variant": "#e3bdc3",
+                        "surface-container-low": "#f8f2f4",
+                        "surface": "#fef8fa",
+                        "on-secondary-fixed": "#2f004b",
+                        "primary-fixed-dim": "#ffb2bf",
+                        "surface-container-lowest": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "16px",
+                        "container-margin": "24px",
+                        "stack-md": "24px",
+                        "stack-lg": "48px",
+                        "base": "8px",
+                        "stack-sm": "12px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "display-lg": ["Playfair Display"],
+                        "title-md": ["Inter"],
+                        "headline-lg-mobile": ["Playfair Display"],
+                        "headline-lg": ["Playfair Display"],
+                        "label-caps": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "title-md": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "headline-lg-mobile": ["28px", { "lineHeight": "36px", "fontWeight": "700" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "fontWeight": "700" }],
+                        "label-caps": ["12px", { "lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 8px 32px 0 rgba(132, 58, 180, 0.05);
+        }
+        .btn-primary-gradient {
+            background: linear-gradient(45deg, #b0004a, #843ab4);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface min-h-screen flex flex-col md:flex-row antialiased selection:bg-primary-container selection:text-on-primary-container">
+<!-- Navigation Drawer (SideNav for Desktop / Drawer for Mobile if toggled) -->
+<nav class="hidden md:flex flex-col bg-surface-container-low/90 backdrop-blur-2xl text-primary font-body-lg h-full w-80 rounded-r-lg shadow-[20px_0_60px_-15px_rgba(132,58,180,0.15)] fixed inset-y-0 left-0 z-[60] ease-in-out duration-300">
+<div class="p-container-margin flex flex-col items-start border-b border-outline-variant/30">
+<h1 class="font-display-lg text-headline-lg-mobile text-primary mb-stack-md">GiftMate</h1>
+<div class="flex items-center gap-base">
+<img alt="User Profile" class="w-12 h-12 rounded-full object-cover shadow-sm" data-alt="A close up, highly detailed professional portrait of an elegant person smiling softly. The lighting is soft and flattering, highlighting features gently against a modern, bright, light-mode background. The color palette incorporates subtle warmth with hints of soft pink and white, reflecting a premium, high-end lifestyle aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBMOAm3pG4WPVAhQUR-KhkTdI-zg6bbUELRH1HdglNq8V-SLeE6Mg8778lEdumFyvk3Fy9Ats8CMorAp9F39RNmyHGHw3vXP_pM_gBRi-8--zdHOwKOQ4WABWw72mdNHVNrBiyEaDxALb0Wa2MUTBcNNwcGp9Nvyfw0r4ldF4QONwUvSxx--yEndjGrQFjhpDakr5rlp9UcpDghvh6A9LJXJw9ADb3MlDeOZia8PUw5NcZV-zX5-L3T"/>
+<div>
+<div class="font-title-md text-title-md text-on-surface">Your Collections</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">Premium Member • Gold Tier</div>
+</div>
+</div>
+</div>
+<div class="flex-1 overflow-y-auto py-stack-md px-base flex flex-col gap-2">
+<!-- Navigation Items. Active state applied to "Reminders" -->
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-variant/50 hover:pl-6 transition-all duration-300 rounded-full mx-2" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">home</span>
+<span>Home</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-variant/50 hover:pl-6 transition-all duration-300 rounded-full mx-2" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">card_giftcard</span>
+<span>Find a Gift</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-variant/50 hover:pl-6 transition-all duration-300 rounded-full mx-2" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">category</span>
+<span>Categories</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-variant/50 hover:pl-6 transition-all duration-300 rounded-full mx-2" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">auto_awesome</span>
+<span>Recommendations</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-variant/50 hover:pl-6 transition-all duration-300 rounded-full mx-2" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">favorite</span>
+<span>Wishlist</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 bg-secondary-container text-on-secondary-container hover:pl-6 transition-all duration-300 rounded-full mx-2 font-bold shadow-sm" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">notifications_active</span>
+<span>Reminders</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-variant/50 hover:pl-6 transition-all duration-300 rounded-full mx-2" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">smart_toy</span>
+<span>AI Assistant</span>
+</a>
+</div>
+</nav>
+<!-- Main Content Area -->
+<div class="flex-1 md:ml-80 flex flex-col min-h-screen">
+<!-- TopAppBar (Mobile Only - Replaced SideNav logic for mobile) -->
+<header class="md:hidden bg-surface/80 backdrop-blur-xl fixed top-0 w-full z-50 shadow-xl flex justify-between items-center px-container-margin py-4 max-w-7xl mx-auto border-b border-white/30">
+<button class="text-primary hover:text-secondary transition-colors duration-300 scale-95 active:opacity-80 transition-transform">
+<span class="material-symbols-outlined text-3xl">menu</span>
+</button>
+<h1 class="font-display-lg text-headline-lg-mobile bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">GiftMate</h1>
+<button class="text-primary hover:text-secondary transition-colors duration-300 scale-95 active:opacity-80 transition-transform">
+<span class="material-symbols-outlined text-3xl">person</span>
+</button>
+</header>
+<main class="flex-1 px-container-margin pt-[100px] md:pt-stack-lg pb-stack-lg w-full max-w-5xl mx-auto">
+<!-- Header Section -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-stack-md mb-stack-lg">
+<div>
+<h2 class="font-display-lg text-display-lg text-on-surface mb-2">Smart Reminders</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Never miss a moment to show you care.</p>
+</div>
+<button class="btn-primary-gradient text-on-primary font-title-md text-title-md px-6 py-3 rounded-full flex items-center justify-center gap-2 shadow-[0_4px_14px_0_rgba(176,0,74,0.39)] hover:shadow-[0_6px_20px_rgba(176,0,74,0.23)] transition-all duration-300">
+<span class="material-symbols-outlined">add</span>
+                    Add Reminder
+                </button>
+</div>
+<!-- Dashboard Grid -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<!-- Timeline/Upcoming List (Left Column) -->
+<div class="md:col-span-8 flex flex-col gap-stack-sm">
+<h3 class="font-title-md text-title-md text-on-surface mb-2 flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary">calendar_today</span>
+                        Upcoming Occasions
+                    </h3>
+<!-- Reminder Card 1 - Urgent -->
+<div class="glass-card rounded-xl p-4 flex items-center gap-4 relative overflow-hidden group hover:-translate-y-1 transition-transform duration-300">
+<div class="absolute left-0 top-0 bottom-0 w-2 bg-primary"></div>
+<div class="flex-shrink-0 w-16 h-16 rounded-full bg-primary-fixed flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'FILL' 1;">cake</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start mb-1">
+<h4 class="font-headline-lg-mobile text-title-md text-on-surface">Mom's Birthday</h4>
+<span class="bg-error-container text-on-error-container font-label-caps text-label-caps px-3 py-1 rounded-full uppercase tracking-wider">Urgent</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Oct 24, 2024</p>
+<p class="font-title-md text-primary mt-1">12 Days Left</p>
+</div>
+<div class="hidden md:flex gap-2">
+<button class="w-10 h-10 rounded-full border border-outline-variant flex items-center justify-center text-on-surface-variant hover:bg-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">edit</span>
+</button>
+<button class="w-10 h-10 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center hover:opacity-80 transition-opacity">
+<span class="material-symbols-outlined">search</span>
+</button>
+</div>
+</div>
+<!-- Reminder Card 2 -->
+<div class="glass-card rounded-xl p-4 flex items-center gap-4 group hover:-translate-y-1 transition-transform duration-300">
+<div class="flex-shrink-0 w-16 h-16 rounded-full bg-secondary-fixed flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start mb-1">
+<h4 class="font-headline-lg-mobile text-title-md text-on-surface">5th Anniversary</h4>
+<span class="bg-surface-variant text-on-surface-variant font-label-caps text-label-caps px-3 py-1 rounded-full uppercase tracking-wider">Upcoming</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Nov 12, 2024</p>
+<p class="font-title-md text-secondary mt-1">31 Days Left</p>
+</div>
+<div class="hidden md:flex gap-2">
+<button class="w-10 h-10 rounded-full border border-outline-variant flex items-center justify-center text-on-surface-variant hover:bg-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">edit</span>
+</button>
+<button class="w-10 h-10 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center hover:opacity-80 transition-opacity">
+<span class="material-symbols-outlined">search</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Suggested Actions / Insight Panel (Right Column) -->
+<div class="md:col-span-4 flex flex-col gap-stack-sm">
+<h3 class="font-title-md text-title-md text-on-surface mb-2 flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary">lightbulb</span>
+                        Smart Insights
+                    </h3>
+<div class="glass-card rounded-xl p-container-margin h-full flex flex-col bg-gradient-to-br from-surface-bright/80 to-primary-fixed/20">
+<div class="mb-4">
+<span class="material-symbols-outlined text-4xl text-primary mb-2" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+<h4 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface mb-1">Curated for Mom</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Based on her saved preferences, we've prepared a selection of high-end spa experiences and artisanal jewelry.</p>
+</div>
+<div class="mt-auto">
+<img alt="Gift Suggestion" class="w-full h-32 object-cover rounded-lg mb-4 shadow-sm" data-alt="A highly aesthetic, minimalist flat lay of a luxury spa gift set on a pristine white marble surface. The arrangement includes an elegant frosted glass bottle of rose oil, a soft pink silk eye mask, and delicate white blossoms. The lighting is bright and ethereal, casting soft, flattering shadows in a bright, modern light-mode setting. The color palette features whites, soft creams, and primary pink accents." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDfsIkacUaultD5dh5LjNrURKop8X6tKJwkCda8OcDVb3_HViI5BRDea3EwsHM-VDCzxIvh5UEKI6vB01OrpjMxVRTNgcw6P6FsjcPGDj44neYp9UrGVRoMZLXw-t9jlYZHX_L0b9ISqrWNzSXP4pVxbz8vn8qo-mqB1AX3z7jPhK993LSeaeeCKF1x-qT7yBgLWI5dx_mzCio_wHUH6qDJ2zOo7eUD4Rx5Rf0gre6MnirEidUjDM2Z"/>
+<button class="w-full py-2 border border-primary text-primary rounded-full font-title-md text-title-md hover:bg-primary-fixed/50 transition-colors">
+                                View Suggestions
+                            </button>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full mt-auto bg-surface-container-highest grid grid-cols-1 md:grid-cols-4 gap-gutter px-container-margin py-stack-lg border-t border-outline-variant flat opacity-90 hover:opacity-100 transition-opacity">
+<div class="md:col-span-1">
+<span class="font-display-lg text-title-md text-primary block mb-4">GiftMate</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">© 2024 GiftMate Premium Curation. All rights reserved.</p>
+</div>
+<div class="md:col-span-3 flex flex-wrap gap-4 justify-start md:justify-end">
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-secondary underline-offset-4 hover:underline" href="#">About Us</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-secondary underline-offset-4 hover:underline" href="#">Gift Guides</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-secondary underline-offset-4 hover:underline" href="#">Shipping</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-secondary underline-offset-4 hover:underline" href="#">Terms</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-secondary underline-offset-4 hover:underline" href="#">Privacy</a>
+</div>
+</footer>
+</div>
+</body></html>

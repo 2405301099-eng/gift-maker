@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>GiftMate - The Art of Giving</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=Playfair+Display:wght@700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-surface": "#1d1b1d",
+                      "on-error-container": "#93000a",
+                      "on-secondary": "#ffffff",
+                      "outline": "#8e6f74",
+                      "on-secondary-fixed-variant": "#6a1b9a",
+                      "tertiary-container": "#cca730",
+                      "secondary": "#843ab4",
+                      "tertiary-fixed-dim": "#e9c349",
+                      "on-secondary-container": "#580087",
+                      "on-tertiary-fixed-variant": "#574500",
+                      "surface-container": "#f2ecee",
+                      "inverse-on-surface": "#f5eff1",
+                      "surface-tint": "#bc004f",
+                      "on-tertiary-container": "#4f3e00",
+                      "secondary-container": "#cc80fd",
+                      "on-background": "#1d1b1d",
+                      "error": "#ba1a1a",
+                      "surface-container-highest": "#e7e1e3",
+                      "on-error": "#ffffff",
+                      "on-primary": "#ffffff",
+                      "background": "#fef8fa",
+                      "secondary-fixed": "#f4d9ff",
+                      "primary-fixed": "#ffd9de",
+                      "on-primary-fixed": "#3f0016",
+                      "surface-dim": "#ded9db",
+                      "surface-bright": "#fef8fa",
+                      "error-container": "#ffdad6",
+                      "surface-variant": "#e7e1e3",
+                      "on-tertiary-fixed": "#241a00",
+                      "inverse-primary": "#ffb2bf",
+                      "on-tertiary": "#ffffff",
+                      "surface-container-high": "#ece7e9",
+                      "tertiary": "#735c00",
+                      "primary-container": "#d81b60",
+                      "primary": "#b0004a",
+                      "inverse-surface": "#323031",
+                      "on-primary-fixed-variant": "#90003b",
+                      "on-surface-variant": "#5a4044",
+                      "secondary-fixed-dim": "#e4b5ff",
+                      "tertiary-fixed": "#ffe088",
+                      "on-primary-container": "#fff2f3",
+                      "outline-variant": "#e3bdc3",
+                      "surface-container-low": "#f8f2f4",
+                      "surface": "#fef8fa",
+                      "on-secondary-fixed": "#2f004b",
+                      "primary-fixed-dim": "#ffb2bf",
+                      "surface-container-lowest": "#ffffff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "1rem",
+                      "lg": "2rem",
+                      "xl": "3rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "gutter": "16px",
+                      "container-margin": "24px",
+                      "stack-md": "24px",
+                      "stack-lg": "48px",
+                      "base": "8px",
+                      "stack-sm": "12px"
+              },
+              "fontFamily": {
+                      "body-lg": [
+                              "Inter"
+                      ],
+                      "body-sm": [
+                              "Inter"
+                      ],
+                      "display-lg": [
+                              "Playfair Display"
+                      ],
+                      "title-md": [
+                              "Inter"
+                      ],
+                      "headline-lg-mobile": [
+                              "Playfair Display"
+                      ],
+                      "headline-lg": [
+                              "Playfair Display"
+                      ],
+                      "label-caps": [
+                              "Inter"
+                      ]
+              },
+              "fontSize": {
+                      "body-lg": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "body-sm": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "display-lg": [
+                              "48px",
+                              {
+                                      "lineHeight": "56px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "title-md": [
+                              "20px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-lg-mobile": [
+                              "28px",
+                              {
+                                      "lineHeight": "36px",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "headline-lg": [
+                              "32px",
+                              {
+                                      "lineHeight": "40px",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "label-caps": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "letterSpacing": "0.1em",
+                                      "fontWeight": "700"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined.fill {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        
+        /* Glassmorphism utilities */
+        .glass-card {
+            background: rgba(254, 248, 250, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 8px 32px 0 rgba(132, 58, 180, 0.05);
+        }
+        
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        /* Ambient Shadows */
+        .ambient-shadow-primary {
+            box-shadow: 0 20px 40px -10px rgba(176, 0, 74, 0.15);
+        }
+        .ambient-shadow-secondary {
+            box-shadow: 0 20px 40px -10px rgba(132, 58, 180, 0.15);
+        }
+        
+        /* Gradients */
+        .gradient-text-primary {
+            background: linear-gradient(45deg, #b0004a, #843ab4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .gradient-bg-primary {
+            background: linear-gradient(45deg, #b0004a, #843ab4);
+        }
+        
+        /* Animations */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes pulse-glow {
+            0% { box-shadow: 0 0 0 0 rgba(204, 128, 253, 0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(204, 128, 253, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(204, 128, 253, 0); }
+        }
+        .focus-glow:focus-within {
+            animation: pulse-glow 2s infinite;
+            border-color: #cc80fd;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background text-on-background antialiased selection:bg-primary-container selection:text-on-primary-container min-h-screen flex flex-col relative overflow-x-hidden">
+<!-- Decorative Background Elements -->
+<div class="fixed inset-0 z-[-1] overflow-hidden pointer-events-none">
+<div class="absolute top-[-10%] right-[-5%] w-[600px] h-[600px] rounded-full bg-primary-fixed/30 blur-[120px]"></div>
+<div class="absolute bottom-[-10%] left-[-10%] w-[800px] h-[800px] rounded-full bg-secondary-fixed/30 blur-[150px]"></div>
+</div>
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-surface/80 dark:bg-surface-dim/80 backdrop-blur-xl border-b border-white/30 shadow-[0_8px_32px_0_rgba(132,58,180,0.1)] shadow-xl">
+<div class="flex justify-between items-center px-container-margin py-4 max-w-7xl mx-auto">
+<!-- Leading Icon -->
+<button class="text-primary dark:text-primary-fixed hover:text-secondary dark:hover:text-secondary-fixed transition-colors duration-300 scale-95 active:opacity-80 transition-transform p-2 rounded-full hidden md:block">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<!-- Mobile Menu Toggle (Simplified for structure) -->
+<button class="text-primary dark:text-primary-fixed md:hidden p-2">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<!-- Headline/Brand -->
+<h1 class="font-display-lg text-display-lg bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent absolute left-1/2 -translate-x-1/2">GiftMate</h1>
+<!-- Trailing Icon -->
+<button class="text-primary dark:text-primary-fixed hover:text-secondary dark:hover:text-secondary-fixed transition-colors duration-300 scale-95 active:opacity-80 transition-transform p-2 rounded-full hidden md:block">
+<span class="material-symbols-outlined">person</span>
+</button>
+<button class="text-primary dark:text-primary-fixed md:hidden p-2">
+<span class="material-symbols-outlined">search</span>
+</button>
+</div>
+</header>
+<!-- Navigation Drawer (Desktop/Tablet Layout Context - Using as a subtle side nav placeholder for visual balance in wide screens if needed, but primarily hiding to focus on content per instructions unless requested. Will integrate into a hidden state or side layout if required by wider grid. For now, following TopAppBar as main nav anchor.) -->
+<!-- Applying Desktop Nav logic via TopAppBar for clean Hero focus -->
+<!-- Main Content Canvas -->
+<main class="flex-grow pt-[100px] pb-stack-lg relative z-10">
+<!-- Hero Section -->
+<section class="relative px-container-margin max-w-7xl mx-auto py-stack-lg md:py-[120px] flex flex-col md:flex-row items-center gap-stack-lg">
+<!-- Text Content -->
+<div class="flex-1 text-center md:text-left flex flex-col items-center md:items-start z-10">
+<div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-panel mb-6 border border-outline-variant">
+<span class="material-symbols-outlined text-secondary text-sm">auto_awesome</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider">AI-Powered Curation</span>
+</div>
+<h2 class="font-display-lg text-headline-lg-mobile md:text-display-lg text-on-surface mb-6 leading-tight">
+                    Find the Perfect Gift,<br/>
+<span class="gradient-text-primary">Every Time.</span>
+</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-8 max-w-lg">
+                    Discover extraordinary presents tailored to their unique personality. Our premium discovery engine curates the unforgettable.
+                </p>
+<div class="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
+<button class="gradient-bg-primary text-on-primary font-title-md text-title-md px-8 py-4 rounded-full ambient-shadow-secondary hover:shadow-xl hover:scale-[1.02] transition-all duration-300 flex items-center justify-center gap-2">
+                        Find My Perfect Gift
+                        <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+<button class="glass-panel text-primary font-title-md text-title-md px-8 py-4 rounded-full border border-primary/20 hover:bg-surface-container transition-colors duration-300 flex items-center justify-center gap-2">
+                        Explore Trending
+                    </button>
+</div>
+</div>
+<!-- Visual Content (Hero Glass Card Bento) -->
+<div class="flex-1 w-full relative h-[400px] md:h-[500px] flex justify-center items-center">
+<!-- Decorative Circle -->
+<div class="absolute inset-0 bg-gradient-to-tr from-primary-fixed-dim to-secondary-fixed rounded-full blur-[80px] opacity-40"></div>
+<!-- Main Featured Card -->
+<div class="glass-card rounded-xl p-4 w-[280px] md:w-[320px] absolute z-20 animate-float ambient-shadow-primary" style="animation-delay: 0s;">
+<div class="bg-cover bg-center w-full h-48 rounded-lg mb-4" data-alt="A beautifully styled, high-end perfume bottle resting on a sleek marble surface. The lighting is soft and luxurious, creating a modern, elegant aesthetic with delicate pink and gold accents, perfectly suited for a premium gift curation app." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDnUQF4H8iKWEFiCxia6aG30dmPUazTnvBKkLsZ0P9aBLI1iVUQ5fXJjmHYnMDw-NSUs61Ul3qR6Al2aOa1txSJvCrJdVymRmCu-URu2GhQNkjByFCTjqgBIwulBLgifVP5GG8kLvVhR7suzclxM5n_CuQ3ZLIpp3IgGvgd6GwEsuC4ITtIMzpXbC9O3sy3g-CLNICaTV_BE29ldk5sjM-7bFwOXTTMksQhJw3n9ugiv15vWTXPXnlm')"></div>
+<div class="flex justify-between items-start mb-2">
+<div>
+<span class="font-label-caps text-label-caps text-secondary uppercase block mb-1">For Her</span>
+<h3 class="font-display-lg text-title-md text-on-surface">Artisan Fragrance</h3>
+</div>
+<span class="font-title-md text-title-md text-primary">₹4,999</span>
+</div>
+<div class="flex gap-2">
+<span class="bg-surface-container px-2 py-1 rounded-full font-body-sm text-body-sm text-on-surface-variant text-xs">Elegant</span>
+<span class="bg-surface-container px-2 py-1 rounded-full font-body-sm text-body-sm text-on-surface-variant text-xs">Floral</span>
+</div>
+</div>
+<!-- Secondary Floating Card (Top Right) -->
+<div class="glass-card rounded-lg p-3 w-[200px] absolute top-[10%] right-[5%] z-10 animate-float ambient-shadow-secondary hidden md:block" style="animation-delay: 1.5s;">
+<div class="bg-cover bg-center w-full h-24 rounded-md mb-3" data-alt="A minimalist, premium leather wallet displayed on a clean, light-mode background. The composition is sophisticated and modern, emphasizing craftsmanship and quality with subtle warm lighting, ideal for a luxury lifestyle context." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuA6E-et-ummTqQjK3KYMpTSdkwpZPgTVZ0_MolQ95-KcwQPavv6D8dpVaLz0Of0OfTGwdT1nHkaHygAbiAWYpTss_5EJUVDM9WCGEptgXgz2nQkhdGlGnhLovwF6maATJyPV7pPMYY2urrT7UW-Uy2s6uxUZqWx8n06gBV2olYoyBQW0PTeZk1uYLBytTF5tcbhLw6xuRQ6aUWUNZLFSBQUtBVlrX6Hcn1TxWL4SlVsu3BwGGM0IDfa')"></div>
+<h4 class="font-body-lg text-body-sm font-semibold text-on-surface mb-1">Classic Leather Wallet</h4>
+<p class="font-body-sm text-body-sm text-secondary text-xs">Trending Now</p>
+</div>
+<!-- Tertiary Floating Element (Bottom Left) -->
+<div class="glass-panel rounded-full px-4 py-3 absolute bottom-[15%] left-[5%] z-30 flex items-center gap-3 animate-float border border-white/50 shadow-lg hidden md:flex" style="animation-delay: 3s;">
+<div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container">
+<span class="material-symbols-outlined">auto_awesome</span>
+</div>
+<div>
+<p class="font-body-sm text-body-sm font-semibold text-on-surface text-sm">98% Match</p>
+<p class="font-label-caps text-label-caps text-on-surface-variant text-[10px]">Based on preferences</p>
+</div>
+</div>
+</div>
+</section>
+<!-- How it Works Section -->
+<section class="py-stack-lg px-container-margin max-w-7xl mx-auto relative z-10">
+<div class="text-center mb-12">
+<h3 class="font-display-lg text-headline-lg-mobile md:text-headline-lg text-on-surface mb-4">The Art of Curation</h3>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto">Three simple steps to unforgettable gifting.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Step 1 -->
+<div class="glass-card rounded-xl p-8 flex flex-col items-center text-center relative group hover:shadow-2xl transition-all duration-300">
+<div class="w-16 h-16 rounded-full bg-primary-fixed flex items-center justify-center text-on-primary-fixed mb-6 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-3xl">psychology</span>
+</div>
+<div class="absolute top-4 right-4 font-display-lg text-headline-lg text-outline-variant opacity-30">01</div>
+<h4 class="font-title-md text-title-md text-on-surface mb-3">Share Personality</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Tell us about their interests, style, and the occasion. Our AI listens to the nuances.</p>
+</div>
+<!-- Step 2 -->
+<div class="glass-card rounded-xl p-8 flex flex-col items-center text-center relative group hover:shadow-2xl transition-all duration-300">
+<div class="w-16 h-16 rounded-full bg-secondary-fixed flex items-center justify-center text-on-secondary-fixed mb-6 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-3xl">travel_explore</span>
+</div>
+<div class="absolute top-4 right-4 font-display-lg text-headline-lg text-outline-variant opacity-30">02</div>
+<h4 class="font-title-md text-title-md text-on-surface mb-3">Discover Options</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Browse a highly curated selection of premium items sourced from unique artisans and luxury brands.</p>
+</div>
+<!-- Step 3 -->
+<div class="glass-card rounded-xl p-8 flex flex-col items-center text-center relative group hover:shadow-2xl transition-all duration-300">
+<div class="w-16 h-16 rounded-full bg-tertiary-fixed-dim flex items-center justify-center text-on-tertiary-fixed-variant mb-6 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-3xl">card_giftcard</span>
+</div>
+<div class="absolute top-4 right-4 font-display-lg text-headline-lg text-outline-variant opacity-30">03</div>
+<h4 class="font-title-md text-title-md text-on-surface mb-3">Delight Them</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Select the perfect match and have it delivered with bespoke packaging and a personalized note.</p>
+</div>
+</div>
+</section>
+<!-- Search/Discover Preview -->
+<section class="py-stack-lg px-container-margin w-full flex justify-center z-10 relative">
+<div class="w-full max-w-4xl glass-card rounded-xl p-2 focus-glow transition-shadow duration-300 flex items-center">
+<div class="px-4 text-tertiary-container">
+<span class="material-symbols-outlined text-2xl">search</span>
+</div>
+<input class="w-full bg-transparent border-none focus:ring-0 font-body-lg text-body-lg text-on-surface placeholder:text-on-surface-variant/50 py-4 outline-none" placeholder="Try 'A gift under ₹5,000 for a foodie who loves modern design...'" type="text"/>
+<button class="bg-tertiary-container text-on-tertiary-container font-title-md text-title-md px-6 py-3 rounded-lg hover:bg-tertiary-fixed-dim transition-colors ml-2 hidden sm:block">
+                     Curate
+                 </button>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-highest dark:bg-inverse-surface w-full mt-stack-lg border-t border-outline-variant z-10 relative">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter px-container-margin py-stack-lg w-full max-w-7xl mx-auto">
+<!-- Brand Column -->
+<div class="flex flex-col gap-4 col-span-1 md:col-span-1">
+<span class="font-display-lg text-title-md text-primary">GiftMate</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant dark:text-surface-variant max-w-xs">Elevating the art of giving through thoughtful, personality-driven curation.</p>
+</div>
+<!-- Links Column 1 -->
+<div class="flex flex-col gap-3">
+<span class="font-label-caps text-label-caps text-on-surface uppercase tracking-wider mb-2">Explore</span>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-secondary underline-offset-4 hover:underline opacity-90 hover:opacity-100 transition-opacity" href="#">Gift Guides</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-secondary underline-offset-4 hover:underline opacity-90 hover:opacity-100 transition-opacity" href="#">Trending</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-secondary underline-offset-4 hover:underline opacity-90 hover:opacity-100 transition-opacity" href="#">Brands</a>
+</div>
+<!-- Links Column 2 -->
+<div class="flex flex-col gap-3">
+<span class="font-label-caps text-label-caps text-on-surface uppercase tracking-wider mb-2">Company</span>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-secondary underline-offset-4 hover:underline opacity-90 hover:opacity-100 transition-opacity" href="#">About Us</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-secondary underline-offset-4 hover:underline opacity-90 hover:opacity-100 transition-opacity" href="#">Careers</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-secondary underline-offset-4 hover:underline opacity-90 hover:opacity-100 transition-opacity" href="#">Contact</a>
+</div>
+<!-- Links Column 3 -->
+<div class="flex flex-col gap-3">
+<span class="font-label-caps text-label-caps text-on-surface uppercase tracking-wider mb-2">Legal</span>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-secondary underline-offset-4 hover:underline opacity-90 hover:opacity-100 transition-opacity" href="#">Shipping</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-secondary underline-offset-4 hover:underline opacity-90 hover:opacity-100 transition-opacity" href="#">Terms</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-secondary underline-offset-4 hover:underline opacity-90 hover:opacity-100 transition-opacity" href="#">Privacy</a>
+</div>
+</div>
+<!-- Bottom Bar -->
+<div class="border-t border-outline-variant/30 px-container-margin py-6 flex flex-col sm:flex-row justify-between items-center max-w-7xl mx-auto gap-4">
+<span class="font-body-sm text-body-sm text-on-surface-variant dark:text-surface-variant text-center sm:text-left">
+                © 2024 GiftMate Premium Curation. All rights reserved.
+            </span>
+<div class="flex gap-4">
+<!-- Social Icons Placeholders -->
+<div class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors cursor-pointer">
+<span class="material-symbols-outlined text-sm">share</span>
+</div>
+<div class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors cursor-pointer">
+<span class="material-symbols-outlined text-sm">mail</span>
+</div>
+</div>
+</div>
+</footer>
+</body></html>

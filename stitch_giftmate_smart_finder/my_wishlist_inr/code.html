@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>GiftMate - Wishlist</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=Playfair+Display:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-surface": "#1d1b1d",
+                        "on-error-container": "#93000a",
+                        "on-secondary": "#ffffff",
+                        "outline": "#8e6f74",
+                        "on-secondary-fixed-variant": "#6a1b9a",
+                        "tertiary-container": "#cca730",
+                        "secondary": "#843ab4",
+                        "tertiary-fixed-dim": "#e9c349",
+                        "on-secondary-container": "#580087",
+                        "on-tertiary-fixed-variant": "#574500",
+                        "surface-container": "#f2ecee",
+                        "inverse-on-surface": "#f5eff1",
+                        "surface-tint": "#bc004f",
+                        "on-tertiary-container": "#4f3e00",
+                        "secondary-container": "#cc80fd",
+                        "on-background": "#1d1b1d",
+                        "error": "#ba1a1a",
+                        "surface-container-highest": "#e7e1e3",
+                        "on-error": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "background": "#fef8fa",
+                        "secondary-fixed": "#f4d9ff",
+                        "primary-fixed": "#ffd9de",
+                        "on-primary-fixed": "#3f0016",
+                        "surface-dim": "#ded9db",
+                        "surface-bright": "#fef8fa",
+                        "error-container": "#ffdad6",
+                        "surface-variant": "#e7e1e3",
+                        "on-tertiary-fixed": "#241a00",
+                        "inverse-primary": "#ffb2bf",
+                        "on-tertiary": "#ffffff",
+                        "surface-container-high": "#ece7e9",
+                        "tertiary": "#735c00",
+                        "primary-container": "#d81b60",
+                        "primary": "#b0004a",
+                        "inverse-surface": "#323031",
+                        "on-primary-fixed-variant": "#90003b",
+                        "on-surface-variant": "#5a4044",
+                        "secondary-fixed-dim": "#e4b5ff",
+                        "tertiary-fixed": "#ffe088",
+                        "on-primary-container": "#fff2f3",
+                        "outline-variant": "#e3bdc3",
+                        "surface-container-low": "#f8f2f4",
+                        "surface": "#fef8fa",
+                        "on-secondary-fixed": "#2f004b",
+                        "primary-fixed-dim": "#ffb2bf",
+                        "surface-container-lowest": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "16px",
+                        "container-margin": "24px",
+                        "stack-md": "24px",
+                        "stack-lg": "48px",
+                        "base": "8px",
+                        "stack-sm": "12px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "display-lg": ["Playfair Display"],
+                        "title-md": ["Inter"],
+                        "headline-lg-mobile": ["Playfair Display"],
+                        "headline-lg": ["Playfair Display"],
+                        "label-caps": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "title-md": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "headline-lg-mobile": ["28px", { "lineHeight": "36px", "fontWeight": "700" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "fontWeight": "700" }],
+                        "label-caps": ["12px", { "lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            background-color: theme('colors.background');
+            color: theme('colors.on-background');
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+        
+        .glass-card {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 10px 30px -10px rgba(132, 58, 180, 0.1);
+        }
+        
+        .gradient-text {
+            background: linear-gradient(to right, theme('colors.primary'), theme('colors.secondary'));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, theme('colors.primary'), theme('colors.secondary'));
+            color: white;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            box-shadow: 0 8px 25px -5px rgba(176, 0, 74, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .ambient-shadow {
+            box-shadow: 0 20px 40px -10px rgba(132, 58, 180, 0.08);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="antialiased min-h-screen flex flex-col">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-surface/80 dark:bg-surface-dim/80 backdrop-blur-xl border-b border-white/30 shadow-[0_8px_32px_0_rgba(132,58,180,0.1)] shadow-xl">
+<div class="flex justify-between items-center px-container-margin py-4 max-w-7xl mx-auto">
+<button aria-label="Menu" class="text-primary dark:text-primary-fixed scale-95 active:opacity-80 transition-transform hover:text-secondary dark:hover:text-secondary-fixed transition-colors duration-300">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+<h1 class="font-display-lg text-display-lg bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">GiftMate</h1>
+<button aria-label="Profile" class="text-primary dark:text-primary-fixed scale-95 active:opacity-80 transition-transform hover:text-secondary dark:hover:text-secondary-fixed transition-colors duration-300">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+</button>
+</div>
+</header>
+<div class="flex flex-1 pt-24 md:pt-32">
+<!-- NavigationDrawer (Hidden on Mobile) -->
+<nav class="hidden md:flex bg-surface-container-low/90 dark:bg-surface-container-highest/90 backdrop-blur-2xl h-full w-80 rounded-r-lg shadow-2xl shadow-[20px_0_60px_-15px_rgba(132,58,180,0.15)] fixed inset-y-0 left-0 z-[60] flex flex-col pt-32 pb-8 overflow-y-auto">
+<div class="px-container-margin mb-8">
+<div class="flex items-center gap-4 mb-4">
+<img alt="User Profile" class="w-12 h-12 rounded-full object-cover border-2 border-primary-fixed-dim" data-alt="A sophisticated, high-end profile avatar portrait of a person in a well-lit modern studio. Soft warm lighting, blurred luxury background. High fashion aesthetic, elegant composition, neutral tones with a subtle pop of deep pink or purple to match a premium gift curation brand identity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDdtZexQf7gGLgSFoeb4kMm7_fUBRSOD-m26f5fwtDkrs1PPY3Jy89H_jplWzZPngvyLUY_Jp4XApvbdazmrZKGGip1FoYQBb3AkafhmFBxNHlTI_ZCIv8IJ98ADjbUbfl4Na1zjy2hSdypT-RTYPtDIIPhvhcAr4dnAC7CDLr8nIh-Fy1UNtatZmdlm1GYO6_sww-qlWbGYZkiVpyWxuBNo5J7XdAl4gef2UZhuox_JM5KYEQPqHmd"/>
+<div>
+<h2 class="font-title-md text-title-md text-on-surface">Your Collections</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Premium Member</p>
+<p class="font-label-caps text-label-caps text-secondary mt-1">Gold Tier</p>
+</div>
+</div>
+</div>
+<ul class="flex-1 space-y-2 font-body-lg text-body-lg dark:text-on-surface">
+<li>
+<a class="flex items-center gap-4 px-6 py-3 text-on-surface-variant hover:bg-surface-variant/50 rounded-full mx-2 hover:pl-6 transition-all duration-300 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span>Home</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-4 px-6 py-3 text-on-surface-variant hover:bg-surface-variant/50 rounded-full mx-2 hover:pl-6 transition-all duration-300 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="card_giftcard">card_giftcard</span>
+<span>Find a Gift</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-4 px-6 py-3 text-on-surface-variant hover:bg-surface-variant/50 rounded-full mx-2 hover:pl-6 transition-all duration-300 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="category">category</span>
+<span>Categories</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-4 px-6 py-3 text-on-surface-variant hover:bg-surface-variant/50 rounded-full mx-2 hover:pl-6 transition-all duration-300 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="auto_awesome">auto_awesome</span>
+<span>Recommendations</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-4 px-6 py-3 bg-secondary-container text-on-secondary-container rounded-full mx-2 hover:pl-6 transition-all duration-300 ease-in-out font-bold" href="#">
+<span class="material-symbols-outlined" data-icon="favorite">favorite</span>
+<span>Wishlist</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-4 px-6 py-3 text-on-surface-variant hover:bg-surface-variant/50 rounded-full mx-2 hover:pl-6 transition-all duration-300 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="notifications_active">notifications_active</span>
+<span>Reminders</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-4 px-6 py-3 text-on-surface-variant hover:bg-surface-variant/50 rounded-full mx-2 hover:pl-6 transition-all duration-300 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="smart_toy">smart_toy</span>
+<span>AI Assistant</span>
+</a>
+</li>
+</ul>
+</nav>
+<!-- Main Content Canvas -->
+<main class="flex-1 w-full max-w-7xl mx-auto px-container-margin md:pl-[340px] lg:pl-[380px] pb-stack-lg">
+<header class="mb-stack-lg flex flex-col md:flex-row md:items-end justify-between gap-4">
+<div>
+<h2 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface mb-2">Curated Wishlist</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Your thoughtfully selected gifts waiting for the perfect moment.</p>
+</div>
+<div class="flex gap-4">
+<button class="glass-card px-6 py-2 rounded-full font-title-md text-title-md text-primary flex items-center gap-2 hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-sm" data-icon="filter_list">filter_list</span>
+                        Filter
+                    </button>
+<button class="btn-primary px-6 py-2 rounded-full font-title-md text-title-md flex items-center gap-2">
+<span class="material-symbols-outlined text-sm" data-icon="share">share</span>
+                        Share List
+                    </button>
+</div>
+</header>
+<!-- Wishlist Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
+<!-- Product Card 1 -->
+<article class="glass-card rounded-xl p-4 flex flex-col group relative overflow-hidden transition-transform duration-300 hover:-translate-y-1">
+<div class="relative w-full aspect-square rounded-lg overflow-hidden mb-4 bg-surface-container-highest">
+<img alt="Luxury Leather Journal" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="A beautifully styled flat lay of a luxury leather bound notebook and a premium fountain pen on a light marble surface. Soft natural lighting, highly detailed, conveying a sense of thoughtful gifting, premium lifestyle, and elegant minimalism. Color palette features deep warm browns, crisp white marble, and a hint of gold." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCoZ3KNKdqEoeRQ_0bzXeBu6BGYSlINWqn00vnagtlX-es9k5Ss_FbQdw-sVM92cUGam_QrRcyDL_7HQunHlapTonS1luRVJdzfze53JYQYJ4NK2EcwGCDb0k5-b2EBUQtRucfI_7GoS_NVzAT12EIGBEEo0jf7-mzIFAJwzDc7QfxyBDIFc3BCaeelCJU8jus-EIaM01e7db3ONy2uYsAvLQXKL9YdVs_DMghoSGhtZs2IRPNfNF9y"/>
+<button aria-label="Remove from wishlist" class="absolute top-3 right-3 w-10 h-10 rounded-full bg-white/80 backdrop-blur-md flex items-center justify-center text-primary hover:bg-primary-fixed transition-colors shadow-sm">
+<span class="material-symbols-outlined" data-icon="favorite" data-weight="fill" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</button>
+<div class="absolute bottom-3 left-3 flex gap-2">
+<span class="px-3 py-1 bg-primary-fixed-dim/90 backdrop-blur-sm rounded-full font-label-caps text-label-caps text-on-primary-fixed">Personalized Gifts</span>
+</div>
+</div>
+<div class="flex-1 flex flex-col">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-display-lg text-title-md text-on-surface line-clamp-2">Handcrafted Italian Leather Journal</h3>
+<p class="font-body-lg text-title-md font-bold text-on-surface shrink-0 ml-4">₹6,499</p>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-4 line-clamp-2">Genuine Tuscan leather with ivory pages, perfect for capturing thoughts and memories.</p>
+<div class="mt-auto flex items-center justify-between pt-4 border-t border-outline-variant/30">
+<span class="flex items-center gap-1 font-body-sm text-body-sm text-secondary">
+<span class="material-symbols-outlined text-sm" data-icon="check_circle" data-weight="fill" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                                In Stock
+                            </span>
+<button class="text-primary hover:text-secondary font-title-md text-body-sm transition-colors flex items-center gap-1">
+                                View Details <span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</div>
+</article>
+<!-- Product Card 2 -->
+<article class="glass-card rounded-xl p-4 flex flex-col group relative overflow-hidden transition-transform duration-300 hover:-translate-y-1">
+<div class="relative w-full aspect-square rounded-lg overflow-hidden mb-4 bg-surface-container-highest">
+<img alt="Artisanal Coffee Set" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="A sophisticated presentation of artisanal ceramic coffee mugs and a bag of premium roasted coffee beans. Warm, inviting lighting emphasizing the texture of the ceramics. Arranged on a minimalist oak table. The mood is cozy yet refined, perfect for a high-end gift curation site. Soft neutral tones with rich coffee browns." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCCZlbbbDOqKZQqsnTeuMe0__FNkEFSW1Qm_XsIlgDivh-X7pijsLlPa11_Ug6Bj7XmzSzK8rmT3D9LDJ95vT5fyRX7OasC2CdjrbtfHMMth-TCGZhDtHUGBHdQ_-4_GsxLBBbNOM-iQ13JxNAHnKrNYNqmq-VqMh-o5G3cJdQu6-TTOr4sMQGy6V7ep5EdbFXmsCBCXMcq0GnWfLemTR3DGKasQwGXREqddgpOHij-mL8R1F74izB5"/>
+<button aria-label="Remove from wishlist" class="absolute top-3 right-3 w-10 h-10 rounded-full bg-white/80 backdrop-blur-md flex items-center justify-center text-primary hover:bg-primary-fixed transition-colors shadow-sm">
+<span class="material-symbols-outlined" data-icon="favorite" data-weight="fill" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</button>
+<div class="absolute bottom-3 left-3 flex gap-2">
+<span class="px-3 py-1 bg-secondary-fixed/90 backdrop-blur-sm rounded-full font-label-caps text-label-caps text-on-secondary-fixed">Hampers</span>
+</div>
+</div>
+<div class="flex-1 flex flex-col">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-display-lg text-title-md text-on-surface line-clamp-2">Kyoto Ceramic Coffee Ritual Set</h3>
+<p class="font-body-lg text-title-md font-bold text-on-surface shrink-0 ml-4">₹8,999</p>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-4 line-clamp-2">Hand-thrown minimalist mugs paired with single-origin beans for the perfect morning moment.</p>
+<div class="mt-auto flex items-center justify-between pt-4 border-t border-outline-variant/30">
+<span class="flex items-center gap-1 font-body-sm text-body-sm text-tertiary">
+<span class="material-symbols-outlined text-sm" data-icon="hourglass_empty">hourglass_empty</span>
+                                Low Stock
+                            </span>
+<button class="text-primary hover:text-secondary font-title-md text-body-sm transition-colors flex items-center gap-1">
+                                View Details <span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</div>
+</article>
+<!-- Empty State (Demonstration of Empty State, though we have cards above) -->
+<div class="hidden col-span-full py-16 flex flex-col items-center justify-center text-center glass-card rounded-xl">
+<div class="w-48 h-48 mb-6 rounded-full bg-surface-container-low flex items-center justify-center">
+<span class="material-symbols-outlined text-6xl text-primary-fixed-dim" data-icon="card_giftcard">card_giftcard</span>
+</div>
+<h3 class="font-display-lg text-headline-lg-mobile text-on-surface mb-4">Your Wishlist is Empty</h3>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-md mb-8">Discover beautifully curated gifts and save them here for future reference or to share with loved ones.</p>
+<button class="btn-primary px-8 py-3 rounded-full font-title-md text-title-md shadow-lg shadow-primary/20">
+                         Explore Curation
+                     </button>
+</div>
+</div>
+</main>
+</div>
+<!-- Footer -->
+<footer class="bg-surface-container-highest dark:bg-inverse-surface w-full mt-stack-lg border-t border-outline-variant flat">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter px-container-margin py-stack-lg w-full max-w-7xl mx-auto">
+<div class="col-span-1 md:col-span-2">
+<h4 class="font-display-lg text-title-md text-primary mb-4">GiftMate</h4>
+<p class="font-body-sm text-body-sm dark:text-surface-variant text-on-surface-variant max-w-sm mb-6">Elevating the art of giving through thoughtful curation and elegant design.</p>
+<p class="font-body-sm text-body-sm dark:text-surface-variant text-on-surface-variant opacity-70">© 2024 GiftMate Premium Curation. All rights reserved.</p>
+</div>
+<div class="col-span-1">
+<ul class="space-y-3 font-body-sm text-body-sm dark:text-surface-variant">
+<li><a class="text-on-surface-variant hover:text-secondary underline-offset-4 hover:underline opacity-90 hover:opacity-100 transition-opacity" href="#">About Us</a></li>
+<li><a class="text-on-surface-variant hover:text-secondary underline-offset-4 hover:underline opacity-90 hover:opacity-100 transition-opacity" href="#">Gift Guides</a></li>
+<li><a class="text-on-surface-variant hover:text-secondary underline-offset-4 hover:underline opacity-90 hover:opacity-100 transition-opacity" href="#">Shipping</a></li>
+</ul>
+</div>
+<div class="col-span-1">
+<ul class="space-y-3 font-body-sm text-body-sm dark:text-surface-variant">
+<li><a class="text-on-surface-variant hover:text-secondary underline-offset-4 hover:underline opacity-90 hover:opacity-100 transition-opacity" href="#">Terms</a></li>
+<li><a class="text-on-surface-variant hover:text-secondary underline-offset-4 hover:underline opacity-90 hover:opacity-100 transition-opacity" href="#">Privacy</a></li>
+</ul>
+</div>
+</div>
+</footer>
+</body></html>

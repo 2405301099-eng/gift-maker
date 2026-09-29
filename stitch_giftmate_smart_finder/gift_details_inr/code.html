@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>GiftMate - Gift Details</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&amp;family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-surface": "#1d1b1d",
+                        "on-error-container": "#93000a",
+                        "on-secondary": "#ffffff",
+                        "outline": "#8e6f74",
+                        "on-secondary-fixed-variant": "#6a1b9a",
+                        "tertiary-container": "#cca730",
+                        "secondary": "#843ab4",
+                        "tertiary-fixed-dim": "#e9c349",
+                        "on-secondary-container": "#580087",
+                        "on-tertiary-fixed-variant": "#574500",
+                        "surface-container": "#f2ecee",
+                        "inverse-on-surface": "#f5eff1",
+                        "surface-tint": "#bc004f",
+                        "on-tertiary-container": "#4f3e00",
+                        "secondary-container": "#cc80fd",
+                        "on-background": "#1d1b1d",
+                        "error": "#ba1a1a",
+                        "surface-container-highest": "#e7e1e3",
+                        "on-error": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "background": "#fef8fa",
+                        "secondary-fixed": "#f4d9ff",
+                        "primary-fixed": "#ffd9de",
+                        "on-primary-fixed": "#3f0016",
+                        "surface-dim": "#ded9db",
+                        "surface-bright": "#fef8fa",
+                        "error-container": "#ffdad6",
+                        "surface-variant": "#e7e1e3",
+                        "on-tertiary-fixed": "#241a00",
+                        "inverse-primary": "#ffb2bf",
+                        "on-tertiary": "#ffffff",
+                        "surface-container-high": "#ece7e9",
+                        "tertiary": "#735c00",
+                        "primary-container": "#d81b60",
+                        "primary": "#b0004a",
+                        "inverse-surface": "#323031",
+                        "on-primary-fixed-variant": "#90003b",
+                        "on-surface-variant": "#5a4044",
+                        "secondary-fixed-dim": "#e4b5ff",
+                        "tertiary-fixed": "#ffe088",
+                        "on-primary-container": "#fff2f3",
+                        "outline-variant": "#e3bdc3",
+                        "surface-container-low": "#f8f2f4",
+                        "surface": "#fef8fa",
+                        "on-secondary-fixed": "#2f004b",
+                        "primary-fixed-dim": "#ffb2bf",
+                        "surface-container-lowest": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "16px",
+                        "container-margin": "24px",
+                        "stack-md": "24px",
+                        "stack-lg": "48px",
+                        "base": "8px",
+                        "stack-sm": "12px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "display-lg": ["Playfair Display"],
+                        "title-md": ["Inter"],
+                        "headline-lg-mobile": ["Playfair Display"],
+                        "headline-lg": ["Playfair Display"],
+                        "label-caps": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "title-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "700"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "700"}],
+                        "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "700"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { background-color: #fef8fa; color: #1d1b1d; }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 10px 30px rgba(132, 58, 180, 0.05);
+        }
+        .text-gradient {
+            background: linear-gradient(45deg, #b0004a, #843ab4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .btn-gradient {
+            background: linear-gradient(45deg, #b0004a, #843ab4);
+            color: white;
+            transition: all 0.3s ease;
+        }
+        .btn-gradient:hover {
+            box-shadow: 0 8px 20px rgba(176, 0, 74, 0.2);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="font-body-lg text-on-surface antialiased selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-surface/80 dark:bg-surface-dim/80 backdrop-blur-xl border-b border-white/30 shadow-[0_8px_32px_0_rgba(132,58,180,0.1)] shadow-xl">
+<div class="flex justify-between items-center px-container-margin py-4 max-w-7xl mx-auto">
+<button class="text-on-surface-variant hover:text-secondary transition-colors duration-300 scale-95 active:opacity-80 transition-transform">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+</button>
+<div class="font-display-lg text-display-lg bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+                GiftMate
+            </div>
+<button class="text-on-surface-variant hover:text-secondary transition-colors duration-300 scale-95 active:opacity-80 transition-transform">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+</button>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="pt-[100px] pb-stack-lg max-w-7xl mx-auto px-container-margin md:px-0 grid grid-cols-1 md:grid-cols-12 gap-gutter relative">
+<!-- Ambient Background Glow -->
+<div class="absolute top-0 right-0 w-[500px] h-[500px] bg-secondary/10 rounded-full blur-[100px] -z-10 pointer-events-none"></div>
+<div class="absolute bottom-[20%] left-[-100px] w-[400px] h-[400px] bg-primary/5 rounded-full blur-[80px] -z-10 pointer-events-none"></div>
+<!-- Left Column: Gallery -->
+<div class="md:col-span-7 flex flex-col gap-gutter">
+<div class="w-full h-[500px] md:h-[700px] rounded-[2rem] overflow-hidden shadow-[0_20px_40px_-15px_rgba(132,58,180,0.1)] relative group">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="A beautifully styled, high-end artisanal espresso machine in a modern minimalist kitchen setting. Soft, natural morning light floods the space, highlighting the polished chrome and matte black finishes. The composition is elegant, conveying luxury and anticipation. Subtle pastel pink and purple accents in the background hint at a premium aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDz5dQwyZmLd_Z0J9cuCefmbWS7q6MiWz1Fhn-5oheoxSF24jh6aijTlTrd_FnYUaE3KZ7Q_c3N7BrE96Qtb0BYkgZWohaSU6J2l_t9JopW5QdNo5W_i1eqRAz0_Hdh5Avdf4ZgYiW3qQnTJ5tcFF40IRo4SxNwuZRPIAj8_K4x2-OMKxNDjxam0YNEIFjk5suQ1a_H46VrgTOA20enfCs2lKLSM-Owddfmlj1gvhlgMthCTmEDsKcp"/>
+<div class="absolute top-container-margin left-container-margin">
+<span class="bg-primary text-on-primary font-label-caps text-label-caps px-4 py-2 rounded-full uppercase shadow-lg backdrop-blur-md">Limited Edition</span>
+</div>
+</div>
+<!-- Thumbnail Strip -->
+<div class="flex gap-gutter overflow-x-auto pb-4 snap-x hide-scrollbar">
+<img class="w-24 h-24 rounded-lg object-cover cursor-pointer border-2 border-primary snap-center flex-shrink-0" data-alt="Close-up detail shot of the espresso machine's intricate steam wand and pressure gauge. High-key lighting emphasizing metallic textures. Minimalist, clean, premium feel." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDZFj6CRhfQlc2yepBG2JBhEvXVuctkqYau8dnOdTqTOYhs1F705-gix819lqxnnb0Wsr9ACNRIc2Pvom_AK-hx_z3RYbg7-Cdf1aiE226BZN98oOtejUQqcUH-jv_U5TgD9oeyPLDsXyl3H1g8Es7KxQgrh6M4WDa-lbZ5EK0ealZj2N5D0gt9CkP6Ve_XXscMARqIYbRGCI3m9F-4hXl_VgnAb0qUhX2BISg5hACl0uIKYc0Ghtec"/>
+<img class="w-24 h-24 rounded-lg object-cover cursor-pointer opacity-70 hover:opacity-100 transition-opacity snap-center flex-shrink-0" data-alt="Overhead flat lay of the espresso machine accessories, neatly arranged on a white marble surface. Soft natural light, high-end aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuASbTCsmP-x-mwVoDYV8-KcvGUx63QuCO9ataKAjl2WXnmrbyoj1uHAOPw0bwEKfEmr-gI2lusMaFbICmSL2FdNyO6E4zYKoNBd7_NVdjUENoaILujSa3jLq4a8TMfShisL9awkKq3zwqm3YUj7x9LGfJugvcy5ukwC7rj4WeHodSfy3U6637jOeKdPvctKRg9i3h9WyIHhSoF6vp1jijVzPNPVh_8S0rNoMr3GPmRBGi7BrhFncpoG"/>
+<img class="w-24 h-24 rounded-lg object-cover cursor-pointer opacity-70 hover:opacity-100 transition-opacity snap-center flex-shrink-0" data-alt="Lifestyle shot of a perfect latte art being poured from the espresso machine. Warm, inviting atmosphere. Sophisticated mood." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBAK6vHSGW4Ajz2rHJlnoAQ0LKme49q4XImKCfr5xZV7l5lJFcEjWV3LQJ0XmfIQsvEj-jTOkuqCP6lzOz-jD33HX2hVrfOkviqWblfeC2TTRuxnqknf9ccrcH_GK1epmaGCaIEYLvZ_as2uTK14ATT_lzRbpnUNTtNWcjNr-kydtPvkmQm7J9tRJb8FPHWniK6zYSZJwUM8coPaSs4hOcWvwsa-t4uwPElz2lomYviK6ernfBPV9HC"/>
+</div>
+</div>
+<!-- Right Column: Details -->
+<div class="md:col-span-5 flex flex-col pt-stack-md md:pt-0 pl-0 md:pl-stack-md z-10">
+<div class="flex justify-between items-start mb-4">
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile md:font-headline-lg md:text-headline-lg text-on-surface">The Artisan Barista Pro</h1>
+<button class="w-12 h-12 rounded-full glass-card flex items-center justify-center hover:bg-primary-fixed/50 transition-colors text-primary shadow-sm hover:shadow-md">
+<span class="material-symbols-outlined" data-icon="favorite">favorite</span>
+</button>
+</div>
+<div class="flex items-end gap-4 mb-stack-md">
+<span class="font-title-md text-[32px] text-primary leading-none">₹9,999</span>
+<span class="font-body-lg text-on-surface-variant line-through mb-1">₹12,999</span>
+<span class="bg-secondary-container text-on-secondary-container font-label-caps text-label-caps px-3 py-1 rounded-full mb-1">10% Off</span>
+</div>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-4 leading-relaxed">
+                Elevate their morning ritual. This meticulously crafted espresso machine combines professional-grade extraction with a stunning minimalist design. The perfect statement piece for the discerning coffee aficionado.
+            </p>
+<!-- Delivery Info -->
+<div class="flex flex-col gap-2 mb-stack-lg p-4 bg-surface-container-low rounded-xl border border-outline-variant/30">
+<div class="flex items-center gap-2 text-on-surface-variant font-body-sm">
+<span class="material-symbols-outlined text-[18px]">local_shipping</span>
+<span>Free delivery on orders above ₹999</span>
+</div>
+<div class="flex items-center gap-2 text-on-surface-variant font-body-sm">
+<span class="material-symbols-outlined text-[18px]">schedule</span>
+<span>Estimated delivery: 2–5 days</span>
+</div>
+</div>
+<!-- Actions -->
+<div class="flex flex-col gap-4 mb-stack-lg">
+<button class="w-full btn-gradient py-4 rounded-full font-title-md text-title-md shadow-lg flex items-center justify-center gap-2 group">
+<span class="material-symbols-outlined group-hover:-translate-y-1 transition-transform" data-icon="card_giftcard">card_giftcard</span>
+                    Gift This Item
+                </button>
+<div class="flex gap-4">
+<button class="flex-1 glass-card py-3 rounded-full font-title-md text-title-md text-secondary border border-outline-variant hover:border-secondary transition-colors text-center">
+                        Add to Wishlist
+                    </button>
+</div>
+</div>
+<!-- Bento Details -->
+<div class="grid grid-cols-2 gap-gutter">
+<!-- Perfect For -->
+<div class="glass-card rounded-[1.5rem] p-6 col-span-2 md:col-span-1">
+<div class="flex items-center gap-2 mb-4 text-primary">
+<span class="material-symbols-outlined" data-icon="people">people</span>
+<h3 class="font-title-md text-title-md text-on-surface">Perfect For</h3>
+</div>
+<div class="flex flex-wrap gap-2">
+<span class="bg-surface-container-high px-3 py-1.5 rounded-full font-body-sm text-body-sm text-on-surface-variant">Coffee Lovers</span>
+<span class="bg-surface-container-high px-3 py-1.5 rounded-full font-body-sm text-body-sm text-on-surface-variant">New Homeowners</span>
+<span class="bg-surface-container-high px-3 py-1.5 rounded-full font-body-sm text-body-sm text-on-surface-variant">Anniversary</span>
+</div>
+</div>
+<!-- Why You'll Love It -->
+<div class="glass-card rounded-[1.5rem] p-6 col-span-2 md:col-span-1">
+<div class="flex items-center gap-2 mb-4 text-secondary">
+<span class="material-symbols-outlined" data-icon="auto_awesome">auto_awesome</span>
+<h3 class="font-title-md text-title-md text-on-surface">Why It's Special</h3>
+</div>
+<ul class="space-y-3 font-body-sm text-body-sm text-on-surface-variant">
+<li class="flex gap-2"><span class="material-symbols-outlined text-[16px] text-primary">check_circle</span> Professional 15-bar pump</li>
+<li class="flex gap-2"><span class="material-symbols-outlined text-[16px] text-primary">check_circle</span> Built-in conical burr grinder</li>
+<li class="flex gap-2"><span class="material-symbols-outlined text-[16px] text-primary">check_circle</span> Hand-finished wood accents</li>
+</ul>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-highest dark:bg-inverse-surface w-full mt-stack-lg border-t border-outline-variant flat px-container-margin py-stack-lg grid grid-cols-1 md:grid-cols-4 gap-gutter">
+<div class="font-display-lg text-title-md text-primary col-span-1 md:col-span-4 mb-4">GiftMate</div>
+<a class="text-on-surface-variant font-body-sm text-body-sm dark:text-surface-variant hover:text-secondary underline-offset-4 hover:underline opacity-90 hover:opacity-100 transition-opacity" href="#">About Us</a>
+<a class="text-on-surface-variant font-body-sm text-body-sm dark:text-surface-variant hover:text-secondary underline-offset-4 hover:underline opacity-90 hover:opacity-100 transition-opacity" href="#">Gift Guides</a>
+<a class="text-on-surface-variant font-body-sm text-body-sm dark:text-surface-variant hover:text-secondary underline-offset-4 hover:underline opacity-90 hover:opacity-100 transition-opacity" href="#">Shipping</a>
+<a class="text-on-surface-variant font-body-sm text-body-sm dark:text-surface-variant hover:text-secondary underline-offset-4 hover:underline opacity-90 hover:opacity-100 transition-opacity" href="#">Terms</a>
+<div class="text-on-surface-variant font-body-sm text-body-sm dark:text-surface-variant col-span-1 md:col-span-4 mt-stack-sm border-t border-outline-variant/30 pt-4">
+            © 2024 GiftMate Premium Curation. All rights reserved.
+        </div>
+</footer>
+</body></html>

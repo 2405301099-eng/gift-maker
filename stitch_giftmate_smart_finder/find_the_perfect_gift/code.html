@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Find a Gift - GiftMate</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=Playfair+Display:ital,wght@0,400;0,700;1,400&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Configuration -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-surface": "#1d1b1d",
+                    "on-error-container": "#93000a",
+                    "on-secondary": "#ffffff",
+                    "outline": "#8e6f74",
+                    "on-secondary-fixed-variant": "#6a1b9a",
+                    "tertiary-container": "#cca730",
+                    "secondary": "#843ab4",
+                    "tertiary-fixed-dim": "#e9c349",
+                    "on-secondary-container": "#580087",
+                    "on-tertiary-fixed-variant": "#574500",
+                    "surface-container": "#f2ecee",
+                    "inverse-on-surface": "#f5eff1",
+                    "surface-tint": "#bc004f",
+                    "on-tertiary-container": "#4f3e00",
+                    "secondary-container": "#cc80fd",
+                    "on-background": "#1d1b1d",
+                    "error": "#ba1a1a",
+                    "surface-container-highest": "#e7e1e3",
+                    "on-error": "#ffffff",
+                    "on-primary": "#ffffff",
+                    "background": "#fef8fa",
+                    "secondary-fixed": "#f4d9ff",
+                    "primary-fixed": "#ffd9de",
+                    "on-primary-fixed": "#3f0016",
+                    "surface-dim": "#ded9db",
+                    "surface-bright": "#fef8fa",
+                    "error-container": "#ffdad6",
+                    "surface-variant": "#e7e1e3",
+                    "on-tertiary-fixed": "#241a00",
+                    "inverse-primary": "#ffb2bf",
+                    "on-tertiary": "#ffffff",
+                    "surface-container-high": "#ece7e9",
+                    "tertiary": "#735c00",
+                    "primary-container": "#d81b60",
+                    "primary": "#b0004a",
+                    "inverse-surface": "#323031",
+                    "on-primary-fixed-variant": "#90003b",
+                    "on-surface-variant": "#5a4044",
+                    "secondary-fixed-dim": "#e4b5ff",
+                    "tertiary-fixed": "#ffe088",
+                    "on-primary-container": "#fff2f3",
+                    "outline-variant": "#e3bdc3",
+                    "surface-container-low": "#f8f2f4",
+                    "surface": "#fef8fa",
+                    "on-secondary-fixed": "#2f004b",
+                    "primary-fixed-dim": "#ffb2bf",
+                    "surface-container-lowest": "#ffffff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "1rem",
+                    "lg": "2rem",
+                    "xl": "3rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "gutter": "16px",
+                    "container-margin": "24px",
+                    "stack-md": "24px",
+                    "stack-lg": "48px",
+                    "base": "8px",
+                    "stack-sm": "12px"
+            },
+            "fontFamily": {
+                    "body-lg": [
+                            "Inter"
+                    ],
+                    "body-sm": [
+                            "Inter"
+                    ],
+                    "display-lg": [
+                            "Playfair Display"
+                    ],
+                    "title-md": [
+                            "Inter"
+                    ],
+                    "headline-lg-mobile": [
+                            "Playfair Display"
+                    ],
+                    "headline-lg": [
+                            "Playfair Display"
+                    ],
+                    "label-caps": [
+                            "Inter"
+                    ]
+            },
+            "fontSize": {
+                    "body-lg": [
+                            "16px",
+                            {
+                                    "lineHeight": "24px",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "body-sm": [
+                            "14px",
+                            {
+                                    "lineHeight": "20px",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "display-lg": [
+                            "48px",
+                            {
+                                    "lineHeight": "56px",
+                                    "letterSpacing": "-0.02em",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "title-md": [
+                            "20px",
+                            {
+                                    "lineHeight": "28px",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "headline-lg-mobile": [
+                            "28px",
+                            {
+                                    "lineHeight": "36px",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "headline-lg": [
+                            "32px",
+                            {
+                                    "lineHeight": "40px",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "label-caps": [
+                            "12px",
+                            {
+                                    "lineHeight": "16px",
+                                    "letterSpacing": "0.1em",
+                                    "fontWeight": "700"
+                            }
+                    ]
+            }
+    },
+        },
+      }
+    </script>
+<style>
+        /* Custom range slider styling for Glassmorphism */
+        input[type=range] {
+            -webkit-appearance: none;
+            width: 100%;
+            background: transparent;
+        }
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 24px;
+            width: 24px;
+            border-radius: 50%;
+            background: theme('colors.primary');
+            cursor: pointer;
+            margin-top: -10px;
+            box-shadow: 0 4px 12px rgba(176, 0, 74, 0.4);
+        }
+        input[type=range]::-webkit-slider-runnable-track {
+            width: 100%;
+            height: 6px;
+            cursor: pointer;
+            background: theme('colors.primary-fixed');
+            border-radius: 3px;
+        }
+        
+        .glass-card {
+            background-color: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            box-shadow: 0 20px 40px -10px rgba(132, 58, 180, 0.08);
+        }
+
+        .chip {
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .chip.active {
+            background-color: theme('colors.primary');
+            color: theme('colors.on-primary');
+            box-shadow: 0 4px 12px rgba(176, 0, 74, 0.3);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body-lg min-h-screen flex flex-col overflow-x-hidden">
+<!-- Ambient Background Gradients -->
+<div class="fixed inset-0 z-[-1] pointer-events-none opacity-40">
+<div class="absolute top-0 left-0 w-[500px] h-[500px] bg-primary-fixed rounded-full mix-blend-multiply filter blur-[100px] opacity-70 animate-blob"></div>
+<div class="absolute top-0 right-0 w-[400px] h-[400px] bg-secondary-fixed rounded-full mix-blend-multiply filter blur-[100px] opacity-70 animate-blob animation-delay-2000"></div>
+<div class="absolute -bottom-32 left-20 w-[600px] h-[600px] bg-tertiary-fixed rounded-full mix-blend-multiply filter blur-[100px] opacity-60 animate-blob animation-delay-4000"></div>
+</div>
+<!-- TopAppBar JSON Component -->
+<header class="fixed top-0 w-full z-50 bg-surface/80 dark:bg-surface-dim/80 backdrop-blur-xl border-b border-white/30 shadow-[0_8px_32px_0_rgba(132,58,180,0.1)] shadow-xl flex justify-between items-center px-container-margin py-4 max-w-7xl mx-auto scale-95 active:opacity-80 transition-transform">
+<button class="text-on-surface-variant hover:text-secondary transition-colors duration-300 md:hidden" id="mobile-menu-btn">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+<div class="font-display-lg text-display-lg bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">GiftMate</div>
+<button class="text-on-surface-variant hover:text-secondary transition-colors duration-300">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+</button>
+</header>
+<!-- NavigationDrawer JSON Component (Desktop SideNav) -->
+<nav class="hidden md:flex flex-col fixed inset-y-0 left-0 z-[40] h-full w-80 rounded-r-lg shadow-2xl shadow-[20px_0_60px_-15px_rgba(132,58,180,0.15)] bg-surface-container-low/90 dark:bg-surface-container-highest/90 backdrop-blur-2xl pt-[100px] ease-in-out duration-300">
+<div class="px-6 mb-8">
+<div class="flex items-center gap-4 mb-2">
+<div class="w-12 h-12 rounded-full overflow-hidden border-2 border-primary-fixed">
+<img class="w-full h-full object-cover" data-alt="A clean, modern profile picture of a person smiling softly. The lighting is high-key and flattering, adhering to a minimalist, premium light-mode aesthetic with subtle warm tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDKo-oQueRiWfkepJzzFIZrhjaEJRug8aqfF-UfQuJwCntDu92Ym_Q7fIAYvJJbOOi6Hgga9_bF3_hn8OLKXkEQ_YRuMEBDMJSXEU_So-3NwZpjfBTPYD8oLTct0QZ9LRWrDd6FoFb-KgDv_aCxCw5tKfMRF_oOggmfjJsulR5s_zzN0rOVCTV7ST1ltHsHmfiPk0eldBRbqQ43hrDvn2BPoGBJteCrkz4fIw46OVnUdSF1HmqxkJZ3"/>
+</div>
+<div>
+<h3 class="font-title-md text-title-md text-primary dark:text-primary-fixed-dim">Your Collections</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Premium Member</p>
+</div>
+</div>
+<span class="inline-block px-2 py-1 bg-tertiary-container/20 text-tertiary text-[10px] uppercase font-bold tracking-wider rounded-md">Gold Tier</span>
+</div>
+<ul class="flex flex-col gap-2 px-4 font-body-lg text-body-lg dark:text-on-surface">
+<li><a class="flex items-center gap-4 px-4 py-3 text-on-surface-variant hover:bg-surface-variant/50 rounded-full mx-2 hover:pl-6 transition-all duration-300" href="#"><span class="material-symbols-outlined" data-icon="home">home</span> Home</a></li>
+<li><a class="flex items-center gap-4 px-4 py-3 bg-secondary-container text-on-secondary-container rounded-full mx-2 hover:pl-6 transition-all duration-300" href="#"><span class="material-symbols-outlined" data-icon="card_giftcard">card_giftcard</span> Find a Gift</a></li>
+<li><a class="flex items-center gap-4 px-4 py-3 text-on-surface-variant hover:bg-surface-variant/50 rounded-full mx-2 hover:pl-6 transition-all duration-300" href="#"><span class="material-symbols-outlined" data-icon="category">category</span> Categories</a></li>
+<li><a class="flex items-center gap-4 px-4 py-3 text-on-surface-variant hover:bg-surface-variant/50 rounded-full mx-2 hover:pl-6 transition-all duration-300" href="#"><span class="material-symbols-outlined" data-icon="auto_awesome">auto_awesome</span> Recommendations</a></li>
+<li><a class="flex items-center gap-4 px-4 py-3 text-on-surface-variant hover:bg-surface-variant/50 rounded-full mx-2 hover:pl-6 transition-all duration-300" href="#"><span class="material-symbols-outlined" data-icon="favorite">favorite</span> Wishlist</a></li>
+<li><a class="flex items-center gap-4 px-4 py-3 text-on-surface-variant hover:bg-surface-variant/50 rounded-full mx-2 hover:pl-6 transition-all duration-300" href="#"><span class="material-symbols-outlined" data-icon="notifications_active">notifications_active</span> Reminders</a></li>
+<li><a class="flex items-center gap-4 px-4 py-3 text-on-surface-variant hover:bg-surface-variant/50 rounded-full mx-2 hover:pl-6 transition-all duration-300" href="#"><span class="material-symbols-outlined" data-icon="smart_toy">smart_toy</span> AI Assistant</a></li>
+</ul>
+</nav>
+<!-- Main Content Canvas -->
+<main class="flex-1 w-full max-w-5xl mx-auto pt-[100px] md:pl-[340px] px-container-margin pb-stack-lg z-10">
+<!-- Page Header -->
+<div class="mb-stack-lg text-center md:text-left">
+<h1 class="font-display-lg text-display-lg text-on-surface mb-2">Curate the Perfect Gift</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">Tell us a bit about them, and our curation engine will discover thoughtful, high-end presents that feel uniquely personal.</p>
+</div>
+<!-- Progress Indicator -->
+<div class="mb-stack-md flex items-center gap-4">
+<span class="font-label-caps text-label-caps text-secondary font-bold">Step 2 of 4</span>
+<div class="flex-1 h-2 bg-surface-variant rounded-full overflow-hidden">
+<div class="h-full w-1/2 bg-gradient-to-r from-primary to-secondary rounded-full"></div>
+</div>
+</div>
+<!-- Interactive Questionnaire - Bento Grid Layout -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-stack-md">
+<!-- Recipient Card -->
+<div class="glass-card rounded-xl p-container-margin md:col-span-2">
+<h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface mb-4">Who are we celebrating?</h2>
+<div class="flex flex-wrap gap-3">
+<button class="chip active px-6 py-2 rounded-full font-title-md text-body-sm">Partner</button>
+<button class="chip bg-primary-fixed/40 text-on-surface-variant hover:bg-primary-fixed px-6 py-2 rounded-full font-title-md text-body-sm">Parent</button>
+<button class="chip bg-primary-fixed/40 text-on-surface-variant hover:bg-primary-fixed px-6 py-2 rounded-full font-title-md text-body-sm">Friend</button>
+<button class="chip bg-primary-fixed/40 text-on-surface-variant hover:bg-primary-fixed px-6 py-2 rounded-full font-title-md text-body-sm">Colleague</button>
+<button class="chip bg-primary-fixed/40 text-on-surface-variant hover:bg-primary-fixed px-6 py-2 rounded-full font-title-md text-body-sm">Sibling</button>
+</div>
+</div>
+<!-- Occasion Card -->
+<div class="glass-card rounded-xl p-container-margin">
+<h3 class="font-title-md text-title-md text-on-surface mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary" data-icon="event">event</span> Occasion
+                </h3>
+<div class="flex flex-wrap gap-2">
+<button class="chip active px-4 py-2 rounded-full font-body-sm">Anniversary</button>
+<button class="chip bg-surface-container-highest text-on-surface-variant hover:bg-surface-variant px-4 py-2 rounded-full font-body-sm">Birthday</button>
+<button class="chip bg-surface-container-highest text-on-surface-variant hover:bg-surface-variant px-4 py-2 rounded-full font-body-sm">Wedding</button>
+<button class="chip bg-surface-container-highest text-on-surface-variant hover:bg-surface-variant px-4 py-2 rounded-full font-body-sm">Just Because</button>
+</div>
+</div>
+<!-- Demographics Card -->
+<div class="glass-card rounded-xl p-container-margin">
+<h3 class="font-title-md text-title-md text-on-surface mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary" data-icon="person_search">person_search</span> Age Group
+                </h3>
+<div class="mt-8 mb-4 px-2">
+<input class="w-full" max="100" min="0" type="range" value="32"/>
+<div class="flex justify-between mt-2 font-label-caps text-label-caps text-outline">
+<span>Teens</span>
+<span>20s</span>
+<span class="text-primary font-bold">30s</span>
+<span>40s+</span>
+<span>Senior</span>
+</div>
+</div>
+</div>
+<!-- Interests Card -->
+<div class="glass-card rounded-xl p-container-margin md:col-span-2 relative overflow-hidden">
+<!-- Decorative Image Layer inside card -->
+<div class="absolute top-0 right-0 w-64 h-full opacity-10 pointer-events-none" data-alt="A delicate, abstract watercolor composition blending soft pinks, gentle purples, and touches of gold. Minimalist, premium aesthetic, creating a sophisticated background texture." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuB5q8zMV2E4pPCc8oLwgnBh4TptMMqxBVCGJyo5rg7oE5wmIryt3rzmTm5IGUqeeWSbUrcd1jQnAoVB_vj_-EHzAcvKBZ5TJ8JM4vF6tCRpEwGMfWM19iB99L3U7J0orDrrUeEeqnjaPEsViK9WQqhH0CAGMxUpcxLVPrsolKqcHupSnilvs2uv-1y1FZE_NfM8Os-DNpcMyPDET1NjdNjlMUDI7VX9Azyqr4nMjfjHHBYvcdGt8eqv')"></div>
+<h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface mb-6 relative z-10">What do they love? <span class="text-on-surface-variant font-body-sm ml-2 font-normal">(Select up to 3)</span></h2>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4 relative z-10">
+<div class="chip active flex flex-col items-center justify-center gap-2 p-4 rounded-xl bg-surface-container/50 border border-transparent">
+<span class="material-symbols-outlined text-3xl" data-icon="flight_takeoff">flight_takeoff</span>
+<span class="font-body-sm font-semibold">Travel</span>
+</div>
+<div class="chip flex flex-col items-center justify-center gap-2 p-4 rounded-xl bg-surface-container/50 border border-white/40 hover:bg-white/40">
+<span class="material-symbols-outlined text-3xl text-outline" data-icon="restaurant_menu">restaurant_menu</span>
+<span class="font-body-sm text-on-surface-variant">Culinary</span>
+</div>
+<div class="chip flex flex-col items-center justify-center gap-2 p-4 rounded-xl bg-surface-container/50 border border-white/40 hover:bg-white/40">
+<span class="material-symbols-outlined text-3xl text-outline" data-icon="spa">spa</span>
+<span class="font-body-sm text-on-surface-variant">Wellness</span>
+</div>
+<div class="chip active flex flex-col items-center justify-center gap-2 p-4 rounded-xl bg-surface-container/50 border border-transparent">
+<span class="material-symbols-outlined text-3xl" data-icon="home_app_logo">home_app_logo</span>
+<span class="font-body-sm font-semibold">Home Decor</span>
+</div>
+<div class="chip flex flex-col items-center justify-center gap-2 p-4 rounded-xl bg-surface-container/50 border border-white/40 hover:bg-white/40">
+<span class="material-symbols-outlined text-3xl text-outline" data-icon="devices">devices</span>
+<span class="font-body-sm text-on-surface-variant">Tech &amp; Gadgets</span>
+</div>
+<div class="chip flex flex-col items-center justify-center gap-2 p-4 rounded-xl bg-surface-container/50 border border-white/40 hover:bg-white/40">
+<span class="material-symbols-outlined text-3xl text-outline" data-icon="palette">palette</span>
+<span class="font-body-sm text-on-surface-variant">Arts &amp; Culture</span>
+</div>
+</div>
+</div>
+<!-- Budget Card -->
+<div class="glass-card rounded-xl p-container-margin md:col-span-2 flex flex-col md:flex-row items-center justify-between gap-8">
+<div class="w-full md:w-1/2">
+<h3 class="font-title-md text-title-md text-on-surface mb-2">Target Budget</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-6">We curate premium options across all ranges.</p>
+<input class="w-full" max="4" min="1" type="range" value="3"/>
+<div class="flex justify-between mt-3 font-label-caps text-label-caps text-outline">
+<span>$</span>
+<span>$$</span>
+<span class="text-primary font-bold">$$$</span>
+<span>$$$$</span>
+</div>
+</div>
+<div class="w-full md:w-auto text-center md:text-right">
+<p class="font-label-caps text-label-caps text-outline mb-1">Estimated Range</p>
+<p class="font-display-lg text-[32px] text-secondary font-bold tracking-tight">$150 - $300</p>
+</div>
+</div>
+</div>
+<!-- CTA Section -->
+<div class="mt-stack-lg flex justify-center">
+<button class="group flex items-center gap-3 bg-gradient-to-r from-primary to-secondary text-on-primary rounded-full px-10 py-5 font-title-md shadow-[0_10px_25px_-5px_rgba(132,58,180,0.4)] hover:shadow-[0_15px_35px_-5px_rgba(132,58,180,0.5)] transform hover:-translate-y-1 transition-all duration-300">
+<span class="material-symbols-outlined group-hover:rotate-12 transition-transform" data-icon="auto_awesome">auto_awesome</span>
+                Find My Gift
+            </button>
+</div>
+</main>
+<!-- Footer JSON Component -->
+<footer class="w-full mt-stack-lg bg-surface-container-highest dark:bg-inverse-surface border-t border-outline-variant md:pl-[320px] z-20">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter px-container-margin py-stack-lg w-full max-w-7xl mx-auto">
+<div class="col-span-1 md:col-span-1">
+<h4 class="font-display-lg text-title-md text-primary mb-4">GiftMate</h4>
+<p class="font-body-sm text-body-sm dark:text-surface-variant text-on-surface-variant">© 2024 GiftMate Premium Curation. All rights reserved.</p>
+</div>
+<div class="col-span-1 md:col-span-3 flex flex-wrap gap-x-8 gap-y-4 md:justify-end items-center">
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-secondary underline-offset-4 hover:underline opacity-90 hover:opacity-100 transition-opacity" href="#">About Us</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-secondary underline-offset-4 hover:underline opacity-90 hover:opacity-100 transition-opacity" href="#">Gift Guides</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-secondary underline-offset-4 hover:underline opacity-90 hover:opacity-100 transition-opacity" href="#">Shipping</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-secondary underline-offset-4 hover:underline opacity-90 hover:opacity-100 transition-opacity" href="#">Terms</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-secondary underline-offset-4 hover:underline opacity-90 hover:opacity-100 transition-opacity" href="#">Privacy</a>
+</div>
+</div>
+</footer>
+<script>
+        // Simple script to handle visual active state toggling for chips
+        document.addEventListener('DOMContentLoaded', () => {
+            const chips = document.querySelectorAll('.chip');
+            chips.forEach(chip => {
+                chip.addEventListener('click', function() {
+                    // For single select behavior (within a parent group conceptually, simplified here)
+                    if(this.parentNode.classList.contains('gap-3') || this.parentNode.classList.contains('gap-2')){
+                        Array.from(this.parentNode.children).forEach(c => {
+                            c.classList.remove('active', 'bg-primary', 'text-on-primary', 'shadow-md');
+                            c.classList.add('bg-primary-fixed/40', 'text-on-surface-variant', 'bg-surface-container-highest');
+                        });
+                        this.classList.add('active', 'bg-primary', 'text-on-primary', 'shadow-md');
+                        this.classList.remove('bg-primary-fixed/40', 'text-on-surface-variant', 'bg-surface-container-highest');
+                    } else {
+                        // Multi-select for interests
+                        this.classList.toggle('active');
+                        if(this.classList.contains('active')){
+                            this.classList.remove('border-white/40', 'text-on-surface-variant');
+                            this.classList.add('border-transparent');
+                            this.querySelector('span.text-outline')?.classList.remove('text-outline');
+                        } else {
+                            this.classList.add('border-white/40', 'text-on-surface-variant');
+                            this.classList.remove('border-transparent');
+                            this.querySelector('span.material-symbols-outlined')?.classList.add('text-outline');
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+</body></html>
